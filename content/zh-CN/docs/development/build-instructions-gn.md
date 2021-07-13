@@ -1,6 +1,6 @@
 # 构建指南
 
-请遵循以下指南来构建Electron。
+按照下面的步骤构建 **Electron**，来生成自定义的 Electron 二进制文件。 为了将您的应用代码与预构建的 Electron 二进制文件打包并发布，请参阅 [应用程序发布][application-distribution] 指南。
 
 ## 平台要求
 
@@ -10,9 +10,9 @@
 * [Linux](build-instructions-linux.md#prerequisites)
 * [Windows](build-instructions-windows.md#prerequisites)
 
-## Build Tools
+## 构建工具
 
-[Electron's Build Tools](https://github.com/electron/build-tools) automate much of the setup for compiling Electron from source with different configurations and build targets. If you wish to set up the environment manually, the instructions are listed below.
+[Electron的构建工具](https://github.com/electron/build-tools) 自动化了很多配置不同的从源代码编译Electron的设置和构建目标。 如果您希望手动设置环境，则说明如下。
 
 ## 前置知识
 
@@ -83,10 +83,10 @@ $ gn gen out/Testing --args="import(\"//electron/build/args/testing.gn\")"
 
 这将在`src/`下的`out/Testing`内生成一个有测试生成配置的文件夹 您可以用另一个名称 替换 `Testing` ，但它应该是 `out` 的子目录。 Also you shouldn't have to run `gn gen` again—if you want to change the build arguments, you can run `gn args out/Testing` to bring up an editor.
 
-To see the list of available build configuration options, run `gn args
-out/Testing --list`.
+要查看可用的构建配置选项的列表，运行 `gn args
+out/Testing--list`。
 
-**For generating Testing build config of Electron:**
+**用于生成测试Electron的构建配置：**
 
 ```sh
 $ gn gen out/Testing --args="import(\"//electron/build/args/testing.gn\") $GN_EXTRA_ARGS"
@@ -148,7 +148,7 @@ $ gn gen out/Testing-x86 --args='... target_cpu = "x86"'
 
 Not all combinations of source and target CPU/OS are supported by Chromium.
 
-| Host        | Target        | 状态                   |
+| Host        | 目标            | 状态                   |
 | ----------- | ------------- | -------------------- |
 | Windows x64 | Windows arm64 | 实验功能                 |
 | Windows x64 | Windows x86   | Automatically tested |
@@ -156,7 +156,7 @@ Not all combinations of source and target CPU/OS are supported by Chromium.
 
 If you test other combinations and find them to work, please update this document :)
 
-See the GN reference for allowable values of [`target_os`][target_os values] and [`target_cpu`][target_cpu values].
+有关 [`target_os`][target_os values] 和 [`target_cpu`][target_cpu values] 的有效值，请查看参考 GN。
 
 #### Windows on Arm (experimental)
 
@@ -193,9 +193,9 @@ $ npm run test -- \
   --enable-logging -g 'BrowserWindow module'
 ```
 
-## Sharing the git cache between multiple machines
+## 在多个计算机之间共享 git 缓存
 
-It is possible to share the gclient git cache with other machines by exporting it as SMB share on linux, but only one process/machine can be using the cache at a time. The locks created by git-cache script will try to prevent this, but it may not work perfectly in a network.
+可以将gclient git 缓存与其他机器共享，导出为 SMB 在linux上共享。 但每次只能有一个进程或机器可以使用缓存。 The locks created by git-cache script will try to prevent this, but it may not work perfectly in a network.
 
 On Windows, SMBv2 has a directory cache that will cause problems with the git cache script, so it is necessary to disable it by setting the registry key
 
@@ -235,6 +235,8 @@ $ gclient sync -f
 ### I'm being asked for a username/password for chromium-internal.googlesource.com
 
 If you see a prompt for `Username for 'https://chrome-internal.googlesource.com':` when running `gclient sync` on Windows, it's probably because the `DEPOT_TOOLS_WIN_TOOLCHAIN` environment variable is not set to 0. Open `Control Panel` → `System and Security` → `System` → `Advanced system settings` and add a system variable `DEPOT_TOOLS_WIN_TOOLCHAIN` with value `0`.  这将促使`depot_tools` 使用本地已安装的Visual Studio(默认状态下，`depot_tools`将会下载一个只有谷歌内部员工有权限使用的内部版本)。
+
+[application-distribution]: ../tutorial/application-distribution.md
 
 [depot-tools]: https://commondatastorage.googleapis.com/chrome-infra-docs/flat/depot_tools/docs/html/depot_tools_tutorial.html#_setting_up
 

@@ -1,4 +1,4 @@
-# Guide officiel
+# Guides officiels
 
 Veuillez vous assurer d'utiliser la documentation qui correspond à votre version d'Electron. Le numéro de version doit être une partie de l'URL de la page. Si ce n'est pas le cas, vous utilisez probablement la documentation d'une branche de développement pouvant contenir des modifications de l'API qui ne sont pas compatibles avec votre version d'Electron. Pour consulter les anciennes versions de la documentation, vous pouvez [Parcourir par tag](https://github.com/electron/electron/tree/v1.4.0) sur GitHub en ouvrant la liste déroulante « Switch branches/tags » et sélectionnez le tag qui correspond à votre version.
 
@@ -10,20 +10,14 @@ Certaines questions sont souvent posées. Vérifiez ceci avant de créer un prob
 
 ## Guides et tutoriels
 
-### Démarrage rapide
+### Premiers Pas
 
-* [Guide de démarrage rapide](tutorial/quick-start.md)
-  * [Prerequisites](tutorial/quick-start.md#prerequisites)
-  * [Créer une application élémentaire](tutorial/quick-start.md#create-a-basic-application)
-  * [Exécuter votre application](tutorial/quick-start.md#run-your-application)
-  * [Préparer l'application pour la distribuer](tutorial/quick-start.md#package-and-distribute-the-application)
+* [Introduction](tutorial/introduction.md)
+* [Démarrage Rapide](tutorial/quick-start.md)
+* [Modèle de processus](tutorial/process-model.md)
 
 ### Apprendre les bases
 
-* [Modèle des processus d'Electron](tutorial/quick-start.md#application-architecture)
-  * [Processus Principal et de Rendu](tutorial/quick-start.md#main-and-renderer-processes)
-  * [Electron API](tutorial/quick-start.md#electron-api)
-  * [Node.js API](tutorial/quick-start.md#nodejs-api)
 * Ajouter des fonctionnalités à votre App
   * [Notifications](tutorial/notifications.md)
   * [Documents récents](tutorial/recent-documents.md)
@@ -36,8 +30,8 @@ Certaines questions sont souvent posées. Vérifiez ceci avant de créer un prob
   * [Fichier représenté pour BrowserWindows sur macOS](tutorial/represented-file.md)
   * [Fichier natif Drag & Drop](tutorial/native-file-drag-drop.md)
   * [Rendu Offscreen](tutorial/offscreen-rendering.md)
-  * [Dark Mode](tutorial/dark-mode.md)
-  * [Intégrer le Web dans Electron](tutorial/web-embeds.md)
+  * [Mode foncé](tutorial/dark-mode.md)
+  * [Les web embeds dans Electron](tutorial/web-embeds.md)
 * [Les Boilerplates et CLIs](tutorial/boilerplates-and-clis.md)
   * [Boilerplate vs CLI](tutorial/boilerplates-and-clis.md#boilerplate-vs-cli)
   * [electron-forge](tutorial/boilerplates-and-clis.md#electron-forge)
@@ -51,6 +45,7 @@ Certaines questions sont souvent posées. Vérifiez ceci avant de créer un prob
   * [Utilisation des Modules Natifs de Node.js](tutorial/using-native-node-modules.md)
   * [Stratégies de performance](tutorial/performance.md)
   * [Stratégies de sécurité](tutorial/security.md)
+  * [Mise en bac à sable de processus](tutorial/sandbox.md)
 * [Accessibilité](tutorial/accessibility.md)
   * [Activation manuelle des fonctionnalités d’accessibilité](tutorial/accessibility.md#manually-enabling-accessibility-features)
 * [Test et débogage](tutorial/application-debugging.md)
@@ -60,6 +55,7 @@ Certaines questions sont souvent posées. Vérifiez ceci avant de créer un prob
   * [Tests sur les systèmes CI (Travis, Jenkins)](tutorial/testing-on-headless-ci.md)
   * [Extension DevTools](tutorial/devtools-extension.md)
   * [Test automatisé avec un driver personnalisé](tutorial/automated-testing-with-a-custom-driver.md)
+  * [REPL](tutorial/repl.md)
 * [Distribution](tutorial/application-distribution.md)
   * [Plateformes supportées](tutorial/support.md#supported-platforms)
   * [Signature de code](tutorial/code-signing.md)
@@ -118,15 +114,18 @@ Ces tutoriels individuels développent les sujets abordés dans le guide ci-dess
 * [ipcMain](api/ipc-main.md)
 * [Menu](api/menu.md)
 * [MenuItem](api/menu-item.md)
+* [MessageChannelMain](api/message-channel-main.md)
+* [MessagePortMain](api/message-port-main.md)
 * [net](api/net.md)
 * [netLog](api/net-log.md)
-* [nativeTheme](api/native-theme.md)
+* [nativeTheme (nativeTheme)](api/native-theme.md)
 * [Notification](api/notification.md)
 * [powerMonitor](api/power-monitor.md)
 * [powerSaveBlocker](api/power-save-blocker.md)
 * [protocol](api/protocol.md)
 * [screen](api/screen.md)
 * [session](api/session.md)
+* [ShareMenu](api/share-menu.md)
 * [systemPreferences](api/system-preferences.md)
 * [TouchBar](api/touch-bar.md)
 * [Tray](api/tray.md)
@@ -135,7 +134,7 @@ Ces tutoriels individuels développent les sujets abordés dans le guide ci-dess
 
 ### Modules pour le processus de rendu (Page Web) :
 
-* [contextBridge](api/context-bridge.md)
+* [contexteBridge](api/context-bridge.md)
 * [ipcRenderer](api/ipc-renderer.md)
 * [webFrame](api/web-frame.md)
 

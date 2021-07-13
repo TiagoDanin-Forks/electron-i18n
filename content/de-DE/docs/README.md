@@ -10,20 +10,14 @@ Es gibt sehr häufig gestellte Fragen. Prüfe das bitte vor dem Erstellen eines 
 
 ## Leitfäden und Tutorials
 
-### Schnellstart
+### Erste Schritte
 
-* [Schnellstart-Anleitung](tutorial/quick-start.md)
-  * [Vorrausetzungen](tutorial/quick-start.md#prerequisites)
-  * [Erstelle eine Basisanwendung](tutorial/quick-start.md#create-a-basic-application)
-  * [Anwendung ausführen](tutorial/quick-start.md#run-your-application)
-  * [Paket und verteilen Sie die Anwendung](tutorial/quick-start.md#package-and-distribute-the-application)
+* [Einführung](tutorial/introduction.md)
+* [Schnellstart](tutorial/quick-start.md)
+* [Process Model](tutorial/process-model.md)
 
 ### Grundlagen lernen
 
-* [Electron's Process Model](tutorial/quick-start.md#application-architecture)
-  * [Main und Render Prozesse](tutorial/quick-start.md#main-and-renderer-processes)
-  * [Electron API](tutorial/quick-start.md#electron-api)
-  * [Node.js API](tutorial/quick-start.md#nodejs-api)
 * Features zu deiner App hinzufügen
   * [Benachrichtigungen](tutorial/notifications.md)
   * [Kürzliche Dokumente](tutorial/recent-documents.md)
@@ -32,12 +26,12 @@ Es gibt sehr häufig gestellte Fragen. Prüfe das bitte vor dem Erstellen eines 
   * [Benutzerdefinierte Windows Taskleiste](tutorial/windows-taskbar.md)
   * [Benutzerdefinierte Linux Desktop Aktionen](tutorial/linux-desktop-actions.md)
   * [Tastenkürzel](tutorial/keyboard-shortcuts.md)
-  * [Offline/Online erkennung](tutorial/online-offline-events.md)
+  * [Offline/Online Erkennung](tutorial/online-offline-events.md)
   * [Repräsentierte Datei für macOS BrowserWindows](tutorial/represented-file.md)
   * [Native Datei Drag & Drop](tutorial/native-file-drag-drop.md)
   * [Offscreen Rendering](tutorial/offscreen-rendering.md)
-  * [Dark Mode](tutorial/dark-mode.md)
-  * [Einbindung von Webseiten in Electron](tutorial/web-embeds.md)
+  * [Dark-Modus](tutorial/dark-mode.md)
+  * [Webbetten in Electron](tutorial/web-embeds.md)
 * [Boilerplates und CLIs](tutorial/boilerplates-and-clis.md)
   * [Boilerplate vs CLI](tutorial/boilerplates-and-clis.md#boilerplate-vs-cli)
   * [electron-forge](tutorial/boilerplates-and-clis.md#electron-forge)
@@ -45,21 +39,23 @@ Es gibt sehr häufig gestellte Fragen. Prüfe das bitte vor dem Erstellen eines 
   * [electron-react-boilerplate](tutorial/boilerplates-and-clis.md#electron-react-boilerplate)
   * [Andere Tools und Boilerplates](tutorial/boilerplates-and-clis.md#other-tools-and-boilerplates)
 
-### Advanced steps
+### Erweiterte Schritte
 
 * Anwendungsarchitektur
   * [Native Node.js Module benutzen](tutorial/using-native-node-modules.md)
   * [Performance Strategies](tutorial/performance.md)
-  * [Security Strategies](tutorial/security.md)
+  * [Sicherheitsstrategien](tutorial/security.md)
+  * [Process Sandboxing](tutorial/sandbox.md)
 * [Barrierefreiheit](tutorial/accessibility.md)
   * [Manuelle Aktivierung der Bedienungshilfen](tutorial/accessibility.md#manually-enabling-accessibility-features)
 * [Testen und Debuggen](tutorial/application-debugging.md)
   * [Debuggen des Hauptprozesses](tutorial/debugging-main-process.md)
-  * [Debugging with Visual Studio Code](tutorial/debugging-vscode.md)
+  * [Debuggen mit Visual Studio-Code](tutorial/debugging-vscode.md)
   * [Verwendung von Selenium und WebDriver](tutorial/using-selenium-and-webdriver.md)
   * [Testen auf Headless CI-Systems (Travis, Jenkins)](tutorial/testing-on-headless-ci.md)
   * [DevTools Erweiterung](tutorial/devtools-extension.md)
   * [Automatisiertes Testen mit einem benutzerdefinierten Treiber](tutorial/automated-testing-with-a-custom-driver.md)
+  * [REPL](tutorial/repl.md)
 * [Verteilung](tutorial/application-distribution.md)
   * [Unterstützte Plattformen](tutorial/support.md#supported-platforms)
   * [Code Signierung](tutorial/code-signing.md)
@@ -118,15 +114,18 @@ Diese individuellen Tutorials bauen auf den Themen auf, die in dem Handbuch weit
 * [ipcMain](api/ipc-main.md)
 * [Menu](api/menu.md)
 * [MenuItem](api/menu-item.md)
+* [MessageChannelMain](api/message-channel-main.md)
+* [MessagePortMain](api/message-port-main.md)
 * [net](api/net.md)
 * [netLog](api/net-log.md)
-* [nativeTheme](api/native-theme.md)
+* [nativeThema](api/native-theme.md)
 * [Mitteilung](api/notification.md)
 * [powerMonitor](api/power-monitor.md)
 * [powerSaveBlocker](api/power-save-blocker.md)
 * [protocol](api/protocol.md)
 * [screen](api/screen.md)
 * [session](api/session.md)
+* [ShareMenu](api/share-menu.md)
 * [systemPreferences](api/system-preferences.md)
 * [TouchBar](api/touch-bar.md)
 * [Fach](api/tray.md)
@@ -135,7 +134,7 @@ Diese individuellen Tutorials bauen auf den Themen auf, die in dem Handbuch weit
 
 ### Module für den Renderer-Prozess (Webseite):
 
-* [contextBridge](api/context-bridge.md)
+* [kontextBridge](api/context-bridge.md)
 * [ipcRenderer](api/ipc-renderer.md)
 * [webFrame](api/web-frame.md)
 

@@ -12,10 +12,10 @@
 快捷方式使用 [` register `](global-shortcut.md#globalshortcutregisteraccelerator-callback) 方法在 [` globalShortcut `](global-shortcut.md) 模块中注册, 即:
 
 ```javascript
-const { app, globalShortcut } = require('electron')
+康斯特 { app, globalShortcut } =需要（'电子'）
 
-app.whenReady().then(() => {
-  // Register a 'CommandOrControl+Y' shortcut listener.
+应用程序。当准备（然后）=> {
+  //注册一个"指挥官控制+Y"快捷方式的听众。
   globalShortcut.register('CommandOrControl+Y', () => {
     // Do stuff when Y and either Command/Control is pressed.
   })
@@ -28,7 +28,7 @@ app.whenReady().then(() => {
 
 使用 `Alt`按键替代 `Option`按键。 使用 Alt 键代替Option. `Option` 键只在 macOS 系统上存在, 而 `Alt` 键在任何系统上都有效.
 
-`Super`键是指 Windows 和 Linux 系统上的 `Windows` 键，但在 macOS 里为 `Cmd` 键.
+`Super` (或 `Meta`) 键对应Windows 和 Linux 系统上的 `Windows` 键，但在 macOS 里为 `Cmd` 键.
 
 ## 可用的功能键
 
@@ -40,13 +40,14 @@ app.whenReady().then(() => {
 * `AltGr`
 * `Shift`
 * `Super`
+* `元数据`
 
 ## 可用的普通按键
 
 * `0` 到 `9`
 * `A` 到 `Z`
 * `F1` 到 `F24`
-* Punctuation like `~`, `!`, `@`, `#`, `$`, etc.
+* 标点符号如 `~`、 `!`、 `@`、 `#`、 `$`等。
 * `Plus`
 * `Space`
 * `Tab`

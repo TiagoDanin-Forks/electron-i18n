@@ -12,7 +12,6 @@
   * Sharing ideas with other Electron app developers
   * 以及更多！
 * [`electron`](https://discuss.atom.io/c/electron) 各种 Atom 论坛
-* `#atom-shell` Freenode上的频道
 * `#electron` [Atom's Slack](https://discuss.atom.io/t/join-us-on-slack/16638?source_topic_id=25406)上的频道
 * [`electron-ru`](https://telegram.me/electron_ru) *(俄语版)*
 * [`electron-br`](https://electron-br.slack.com) *(巴西葡语版)*
@@ -40,9 +39,9 @@
 
 ### 当前支持的版本
 
+* 13.x.y
 * 12.x.y
 * 11.x.y
-* 10.x.y
 
 ### 服务终止
 
@@ -58,7 +57,7 @@
 
 ### macOS
 
-对 macOS 仅提供64位版本，并且只支持 macOS 10.10 (Yosemite) 以及更高版本。
+对 macOS 仅提供64位版本，并且只支持 macOS 10.11 (El Capitan) 以及更高版本。
 
 Electron 11.0.0 已原生支持 Apple Silicon (`arm64`) 设备。
 

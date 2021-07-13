@@ -17,7 +17,7 @@ También es posible enviar mensajes desde el proceso principal al proceso de ren
 Ejemplo de envío y manejo de mensajes entre el proceso de renderizado y el principal:
 
 ```javascript
-// En el proceso principal.
+// In main process.
 const { ipcMain } = require('electron')
 ipcMain.on('asynchronous-message', (event, arg) => {
   console.log(arg) // prints "ping"
@@ -31,7 +31,7 @@ ipcMain.on('synchronous-message', (event, arg) => {
 ```
 
 ```javascript
-// En el proceso de renderizado (página web).
+// In renderer process (web page).
 const { ipcRenderer } = require('electron')
 console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
 
@@ -103,6 +103,8 @@ async () => {
 ```
 
 El `event` que es pasado como primer argumento al handler es el mismo que es pasado a un event listener normal. Incluye información sobre cual WebContents es el origen de la solicitud invocada.
+
+Los errores lanzados a través de `handle` en el main process no son transparentes, ya que se serializan y solo la propiedad `message` del error original es proveído al renderer process. Por favor, consulte [#24427](https://github.com/electron/electron/issues/24427) para más detalles.
 
 ### `ipcMain.handleOnce(channel, listener)`
 

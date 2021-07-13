@@ -1,3 +1,5 @@
+# Tray
+
 ## Class: Tray
 
 > Add icons and context menus to the system's notification area.
@@ -70,7 +72,7 @@ The `Tray` module emits the following events:
 Retorna:
 
 * `event` [KeyboardEvent](structures/keyboard-event.md)
-* `bounds` [Rectangle](structures/rectangle.md) - The bounds of tray icon.
+* `bounds` [Retângulo](structures/rectangle.md) - Os limites do ícone da bandeja.
 * `position` [Point](structures/point.md) - The position of the event.
 
 Emitted when the tray icon is clicked.
@@ -80,7 +82,7 @@ Emitted when the tray icon is clicked.
 Retorna:
 
 * `event` [KeyboardEvent](structures/keyboard-event.md)
-* `bounds` [Rectangle](structures/rectangle.md) - The bounds of tray icon.
+* `bounds` [Retângulo](structures/rectangle.md) - Os limites do ícone da bandeja.
 
 Emitted when the tray icon is right clicked.
 
@@ -89,7 +91,7 @@ Emitted when the tray icon is right clicked.
 Retorna:
 
 * `event` [KeyboardEvent](structures/keyboard-event.md)
-* `bounds` [Rectangle](structures/rectangle.md) - The bounds of tray icon.
+* `bounds` [Retângulo](structures/rectangle.md) - Os limites do ícone da bandeja.
 
 Emitted when the tray icon is double clicked.
 
@@ -243,7 +245,7 @@ Returns `Boolean` - Whether double click events will be ignored.
   * `iconType` String (optional) - Can be `none`, `info`, `warning`, `error` or `custom`. Default is `custom`.
   * `title` String
   * `content` String
-  * `largeIcon` Boolean (optional) - The large version of the icon should be used. Default is `true`. Maps to [`NIIF_LARGE_ICON`][NIIF_LARGE_ICON].
+  * `largeIcon` Boolean (optional) - The large version of the icon should be used. Por padrão é `true`. Maps to [`NIIF_LARGE_ICON`][NIIF_LARGE_ICON].
   * `noSound` Boolean (optional) - Do not play the associated sound. Por padrão é `false`. Maps to [`NIIF_NOSOUND`][NIIF_NOSOUND].
   * `respectQuietTime` Boolean (optional) - Do not display the balloon notification if the current user is in "quiet time". Por padrão é `false`. Maps to [`NIIF_RESPECT_QUIET_TIME`][NIIF_RESPECT_QUIET_TIME].
 

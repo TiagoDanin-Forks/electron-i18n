@@ -1,13 +1,13 @@
 # Instructions de compilation (Linux)
 
-Suivez les indications ci-dessous pour compiler Electron sur Windows.
+Follow the guidelines below for building **Electron itself** on Linux, for the purposes of creating custom Electron binaries. For bundling and distributing your app code with the prebuilt Electron binaries, see the [application distribution][application-distribution] guide.
 
-## Prerequisites
+## Prérequis
 
 * Au moins 25GB d'espace disque et 8 Go de RAM.
-* Python 2.7.x. Some distributions like CentOS 6.x still use Python 2.6.x so you may need to check your Python version with `python -V`.
+* Python 2.7.x. Certaines distributions comme CentOS 6.x utilisent toujours Python 2.6.x vous devrez donc peut-être vérifier votre version de Python avec `python -V`.
 
-  Please also ensure that your system and Python version support at least TLS 1.2. For a quick test, run the following script:
+  Veuillez également vous assurer que votre système et la version Python prennent en charge au moins TLS 1.2. Pour un test rapide, exécutez le script suivant :
 
   ```sh
   $ npx @electron/check-python-tls
@@ -56,7 +56,7 @@ $ sudo pacman -Syu base-devel clang libdbus gtk2 libnotify \
                    python2 python-dbusmock jdk8-openjdk
 ```
 
-Other distributions may offer similar packages for installation via package managers such as pacman. Or one can compile from source code.
+Other distributions may offer similar packages for installation via package managers such as pacman. Ou on peut compiler à partir du code source.
 
 ### Multi-compilation
 
@@ -96,7 +96,7 @@ $ sudo ln -s /usr/lib/libncurses.so.5 /usr/lib/libtinfo.so.5
 
 ## Sujets Avancés
 
-The default building configuration is targeted for major desktop Linux distributions. To build for a specific distribution or device, the following information may help you.
+The default building configuration is targeted for major desktop Linux distributions. Pour créer une distribution ou un périphérique spécifique, les informations informations peuvent vous aider.
 
 ### Utiliser le système `clang` au lieu des fichiers binaires téléchargés `clang`
 
@@ -111,3 +111,5 @@ $ gn gen out/Testing --args='import("//electron/build/args/testing.gn") clang_ba
 ### Utiliser un compilateur autre que `clang`
 
 La construction d'électrons avec des compilateurs autres que `clang` n'est pas prise en charge.
+
+[application-distribution]: ../tutorial/application-distribution.md

@@ -10,20 +10,14 @@
 
 ## ガイドとチュートリアル
 
-### クイックスタート
+### はじめましょう
 
-* [クイックスタートガイド](tutorial/quick-start.md)
-  * [必要な環境](tutorial/quick-start.md#prerequisites)
-  * [基本的なアプリケーションを作成](tutorial/quick-start.md#create-a-basic-application)
-  * [アプリケーションの実行](tutorial/quick-start.md#run-your-application)
-  * [アプリケーションのパッケージと配布](tutorial/quick-start.md#package-and-distribute-the-application)
+* [はじめに](tutorial/introduction.md)
+* [クイック スタート](tutorial/quick-start.md)
+* [プロセスモデル](tutorial/process-model.md)
 
 ### 基本を学ぶ
 
-* [Electron のプロセスモデル](tutorial/quick-start.md#application-architecture)
-  * [メインプロセスとレンダラープロセス](tutorial/quick-start.md#main-and-renderer-processes)
-  * [Electron API](tutorial/quick-start.md#electron-api)
-  * [Node.js API](tutorial/quick-start.md#nodejs-api)
 * アプリに機能を追加する
   * [通知](tutorial/notifications.md)
   * [最近使った書類](tutorial/recent-documents.md)
@@ -51,6 +45,7 @@
   * [ネイティブ Node.js モジュールを使用する](tutorial/using-native-node-modules.md)
   * [パフォーマンス戦略](tutorial/performance.md)
   * [セキュリティ戦略](tutorial/security.md)
+  * [プロセスのサンドボックス化](tutorial/sandbox.md)
 * [アクセシビリティ](tutorial/accessibility.md)
   * [アクセシビリティ機能を手動で有効にする](tutorial/accessibility.md#manually-enabling-accessibility-features)
 * [テストとデバッグ](tutorial/application-debugging.md)
@@ -60,6 +55,7 @@
   * [ヘッドレスCIシステムでのテスト (Travis, Jenkins)](tutorial/testing-on-headless-ci.md)
   * [デベロッパー ツール拡張](tutorial/devtools-extension.md)
   * [カスタムドライバを使った自動テスト](tutorial/automated-testing-with-a-custom-driver.md)
+  * [REPL](tutorial/repl.md)
 * [配布方法](tutorial/application-distribution.md)
   * [サポートされているプラットフォーム](tutorial/support.md#supported-platforms)
   * [コード署名](tutorial/code-signing.md)
@@ -118,6 +114,8 @@
 * [ipcMain](api/ipc-main.md)
 * [Menu](api/menu.md)
 * [MenuItem](api/menu-item.md)
+* [MessageChannelMain](api/message-channel-main.md)
+* [MessagePortMain](api/message-port-main.md)
 * [net](api/net.md)
 * [netLog](api/net-log.md)
 * [nativeTheme](api/native-theme.md)
@@ -127,6 +125,7 @@
 * [protocol](api/protocol.md)
 * [screen](api/screen.md)
 * [session](api/session.md)
+* [ShareMenu](api/share-menu.md)
 * [systemPreferences](api/system-preferences.md)
 * [TouchBar](api/touch-bar.md)
 * [Tray](api/tray.md)

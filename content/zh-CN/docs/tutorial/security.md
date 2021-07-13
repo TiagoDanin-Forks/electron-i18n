@@ -1,6 +1,6 @@
 # 安全性，原生能力和你的责任
 
-Web开发人员通常享有浏览器强大的网络安全特性，而自己的代码风险相对较小。 Our websites are granted limited powers in a sandbox, and we trust that our users enjoy a browser built by a large team of engineers that is able to quickly respond to newly discovered security threats.
+Web开发人员通畅享有浏览器强大的网络安全特性，而自己的代码风险相对较小。 我们的网站在沙盒中被赋予了有限的权力，我们相信我们的用户享受到的是一个由大型工程师团队打造的浏览器，它能够快速应对新发现的安全威胁。
 
 当使用 Electron 时，很重要的一点是要理解 Electron 不是一个 Web 浏览器。 它允许您使用熟悉的 Web 技术构建功能丰富的桌面应用程序，但是您的代码具有更强大的功能。 JavaScript 可以访问文件系统，用户 shell 等。 这允许您构建更高质量的本机应用程序，但是内在的安全风险会随着授予您的代码的额外权力而增加。
 
@@ -77,8 +77,13 @@ browserWindow.loadURL ('http://example.com')
 browserWindow.loadURL ('https://example.com')
 ```
 
-```html<!-- 不推荐 --><script crossorigin src="http://example.com/react.js"></script>
-<link rel="stylesheet" href="http://example.com/style.css"><!-- 推荐 --><script crossorigin src="https://example.com/react.js"></script>
+```html
+<!-- 不推荐 -->
+<script crossorigin src="http://example.com/react.js"></script>
+<link rel="stylesheet" href="http://example.com/style.css">
+
+<!-- 推荐 -->
+<script crossorigin src="https://example.com/react.js"></script>
 <link rel="stylesheet" href="https://example.com/style.css">
 ```
 
@@ -119,7 +124,12 @@ const mainWindow = new BrowserWindow({
 mainWindow.loadURL('https://example.com')
 ```
 
-```html<!-- 不推荐 --><webview nodeIntegration src="page.html"></webview><!-- 推荐 --><webview src="page.html"></webview>
+```html
+<!-- 不推荐 -->
+<webview nodeIntegration src="page.html"></webview>
+
+<!-- 推荐 -->
+<webview src="page.html"></webview>
 ```
 
 当禁用Node.js集成时，你依然可以暴露API给你的站点以使用Node.js的模块功能或特性。 预加载脚本依然可以使用`require`等Node.js特性， 以使开发者可以暴露自定义API给远程加载内容。
@@ -141,9 +151,9 @@ window.readConfig = function () {
 
 Electron使用了和Chromium相同的[Content Scripts](https://developer.chrome.com/extensions/content_scripts#execution-environment)技术来开启这个行为。
 
-Even when `nodeIntegration: false` is used, to truly enforce strong isolation and prevent the use of Node primitives `contextIsolation` **must** also be used.
+即便使用了 `nodeIntegration: false`, 要实现真正的强隔离并且防止使用 Node.js 的功能， `contextIsolation` 也 **必须** 开启.
 
-### 为什么 & 如何?
+### 为什么?
 
 欲了解更多关于 `上下文隔离` 以及如何启用它的信息，请 查看我们专用的 [上下文隔离](context-isolation.md) 文档。
 
@@ -208,7 +218,12 @@ const mainWindow = new BrowserWindow({
 const mainWindow = new BrowserWindow()
 ```
 
-```html<!-- 不推荐 --><webview disablewebsecurity src="page.html"></webview><!-- 推荐 --><webview src="page.html"></webview>
+```html
+<!-- 不推荐 -->
+<webview disablewebsecurity src="page.html"></webview>
+
+<!-- 推荐 -->
+<webview src="page.html"></webview>
 ```
 
 ## 6) 定义一个内容安全策略
@@ -348,18 +363,23 @@ _Electron的默认值即是建议值。_
 
 ### 怎么做？
 
-```html<!-- 不推荐 --><webview allowpopups src="page.html"></webview><!-- 推荐 --><webview src="page.html"></webview>
+```html
+<!-- 不推荐 -->
+<webview allowpopups src="page.html"></webview>
+
+<!-- 推荐 -->
+<webview src="page.html"></webview>
 ```
 
 ## 11) 创建WebView前确认其选项
 
 通过渲染进程创建的WebView是不开启Node.js集成的，且也不能由自身开启。 但是，WebView可以通过其`webPreferences`属性创建一个独立的渲染进程。
 
-It is a good idea to control the creation of new [`<webview>`][webview-tag] tags from the main process and to verify that their webPreferences do not disable security features.
+通过控制主进程中创建新的[`<webview>`][webview-tag]，并确认其webPreferences没有禁用安全相关特性是个不错的办法。
 
 ### 为什么？
 
-从 `<webview>` 生活在DOM中 即使是节点也可以通过运行在您的 网站上的脚本创建它们。 s 集成被禁用。
+由于 `<webview>` 存在在DOM中，因此即使Node继承被禁用，它也可以通过运行在您的 网站上的脚本创建它们。
 
 Electron 可以让开发者关闭各种控制渲染进程的安全特性。 通常情况下，开发者并不需要关闭他们中的任何一种 - 因此你不应该允许创建不同配置的[`<webview>`][webview-tag]标签
 
@@ -399,7 +419,7 @@ app.on('web-contents-created', (event, contents) => {
 
 ### 怎么做？
 
-If your app has no need for navigation, you can call `event.preventDefault()` in a [`will-navigate`][will-navigate] handler. 如果您知道您的应用程序 可能导航到的页面 在事件处理程序中检查URL，并且只允许导航 与您想要的URL匹配。
+如果您的应用不需要导航，您可以在 [`will-navigate`][will-navigate] 处理器中调用 `event.preventDefault()`。 如果您知道您的应用程序 可能导航到的页面 在事件处理程序中检查URL，并且只允许导航 与您想要的URL匹配。
 
 我们建议您使用 Node的 URL 解析器。 简单的字符串比较有时会出错 - `startsWith('https://example.com')`测试会让`https://example.com.attacker.com`通过.
 
@@ -452,13 +472,13 @@ app.on('web-contents-created', (event, contents) => {
 })
 ```
 
-## 14) 不要使用含有不可信任内容的 `openExterne`
+## 14) 不要使用 `openExternal` 打开含有不可信任内容
 
-Shell's [`openExternal`][open-external] allows opening a given protocol URI with the desktop's native utilities. On macOS, for instance, this function is similar to the `open` terminal command utility and will open the specific application based on the URI and filetype association.
+Shell 的 [`openExternal`][open-external] 允许使用桌面的原生工具打开指定的协议 URI。 例如，在 macOS 上，此功能与 `open` 终端命令实用程序类似，将基于 URI 和文件类型关联打开特定的应用程序。
 
 ### 为什么？
 
-Improper use of [`openExternal`][open-external] can be leveraged to compromise the user's host. 当OpenExtern使用内容不受信任时，它可以使用 来执行任意命令。
+错误使用 [`openExternal`][open-external] 会危害用户的主机 当 openExternal 使用内容不受信任时，它可以用来执行任意命令。
 
 ### 怎么做？
 
@@ -476,13 +496,13 @@ shell.openExternal('https://example.com/index.html')
 
 ## 15) 使用当前版本的 Electron
 
-你应该努力始终去使用最新版本的 Electron。 每当发布新的主要版本时，你应该尝试尽快更新您的应用。
+你应该尽可能使用最新版本的 Electron。 每当发布新的主要版本时，你应该尝试尽快更新您的应用。
 
 ### 为什么？
 
-使用旧版本Electron、Chromium和节点构建的应用程序。 s 比使用较新版本的 这些组件的应用程序更容易成为目标。 一般来说，较旧的 版本的 Chromium 和 Node.js 的安全问题和开发范围更广。
+一个使用 Electron、Chromium 和 Node.js 的旧版本构建的应用程序比使用这些组件的最新版本的应用程序更容易成为目标。 一般来说，较旧的 版本的 Chromium 和 Node.js 的安全问题和开发范围更广。
 
-Chromium和Node.js都是 数千名有才华的开发者建造的令人印象深刻的工程精英。 Given their popularity, their security is carefully tested and analyzed by equally skilled security researchers. Many of those researchers [disclose vulnerabilities responsibly][responsible-disclosure], which generally means that researchers will give Chromium and Node.js some time to fix issues before publishing them. 如果 运行最新版本的 Electron (因而，Chromium 和 Node)，您的应用程序将更加安全。 对于那些潜在的安全问题不那么广为人知的 来说也是如此。
+Chromium 和 Node.js 都是数千名有才华的开发者建造的令人印象深刻的工程。 鉴于他们受欢迎的程度，他们的安全性都经过专业的安全研究人员仔细的测试和分析。 其中许多研究人员[负责任地披露漏洞][responsible-disclosure]，这通常意味着研究人员会给 Chromium 和 Node.js 一些时间来修复问题，然后再发布它们。 如果你的应用程序运行的是 Electron 的最新版本 (包括 Chromium 和 Node.js)，你的应用程序将更加安全，因为潜在的安全问题并不广为人知。
 
 [browser-window]: ../api/browser-window.md
 

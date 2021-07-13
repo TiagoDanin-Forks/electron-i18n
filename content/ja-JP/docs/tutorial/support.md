@@ -1,4 +1,4 @@
-# Electronサポート
+# Electron サポート
 
 ## サポートを探す
 
@@ -12,7 +12,6 @@
   * 他の Electron アプリ開発者とアイデアを共有するチャンネル
   * 他にもたくさん!
 * Atom フォーラムの [`electron`](https://discuss.atom.io/c/electron) カテゴリ
-* Freenode の `#atom-shell` チャンネル
 * [Atom の Slack](https://discuss.atom.io/t/join-us-on-slack/16638?source_topic_id=25406) の `#electron` チャンネル
 * [`electron-ru`](https://telegram.me/electron_ru) *(ロシア)*
 * [`electron-br`](https://electron-br.slack.com) *(ブラジルポルトガル語)*
@@ -40,9 +39,9 @@ Electron の [サポートしているバージョン](#supported-versions) に�
 
 ### 現在のサポート対象バージョン
 
+* 13.x.y
 * 12.x.y
 * 11.x.y
-* 10.x.y
 
 ### End-of-life
 
@@ -58,7 +57,7 @@ Electronは以下のプラットフォームをサポートしています。
 
 ### macOS
 
-macOS 向けには 64bit バイナリのみが提供されます。対応する macOS のバージョンは macOS 10.10 (Yosemite) 以降です。
+macOS 向けには 64bit バイナリのみが提供されます。対応する macOS のバージョンは macOS 10.11 (El Capitan) 以降です。
 
 Electron 11.0.0 から、Apple Silicon (`arm64`) デバイスのネイティブサポートを追加しました。
 

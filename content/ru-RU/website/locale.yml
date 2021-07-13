@@ -1,4 +1,4 @@
-tagline: Создавайте кросс-платформенные приложения при помощи JavaScript, HTML и CSS
+tagline: Создавайте свои компьютерные кросс-платформенные приложения при помощи JavaScript, HTML и CSS
 nav:
   apps: Приложения
   blog: Блог
@@ -26,7 +26,6 @@ keyboard_modal:
   open_new_tab: Открыть выбранные результат поиска в новой вкладке
 docs:
   title: Документация Electron
-  description: Просмотрите всю <a href="/docs/all">документацию на одной странице</a> или посетите <a href="/docs/faq">FAQ</a>.
   guides: "Руководства: Начало работы с Electron"
   api_reference: Справка по API
   api_structures: Структуры API
@@ -39,7 +38,6 @@ docs:
   propose_change: Улучшить этот документ
   version_history: История версий
   translate: Перевести этот документ
-  view_all_docs: Вся документация на одной странице
 languages:
   choose_language: Выберите язык сайта
   view_more_details: Узнать больше о языке
@@ -97,7 +95,7 @@ web_technologies:
   description: Electron использует Chromium и Node.js, так что Вы можете создавать свои приложения на HTML, CSS и JavaScript.
 open_source:
   title: Open Source
-  description: Electron это проект с открытым исходным кодом, который поддерживается GitHub и активным сообществом участников.
+  description: Electron это проект с открытым исходным кодом, который поддерживается OpenJS Foundation и активным сообществом авторов.
 cross_platform:
   title: Кросс-платформенный
   description: Совместимые с Mac, Windows и Linux приложения Electron создаются и запускаются на трех платформах.
@@ -112,13 +110,10 @@ get_started:
   title: Начать работу
   description: Для начала работы с Electron посмотрите на указанные ниже ресурсы. Узнайте как обернуть Ваше веб-приложение с Electron, получить доступ ко всем API и научиться создавать установщики.
 explore:
-  title: Исследуйте Electron API
-  description: "<a href='https://github.com/electron/electron-api-demos'>Демонстрационное приложение Electron API</a> интерактивно демонстрирует наиболее важные функции Electron API. Посмотрите на возможности Electron на примере простого кода и прочитайте полезные советы для создания Вашего приложения."
-  fiddle_title: Попробуйте более мощные эксперименты с Electron Fiddle
+  fiddle_title: Try powerful experiments with Electron Fiddle
   see_more_info: Подробнее
 download: Скачать
 download_from_github: Скачать с GitHub
-view_all_releases_on_github: <a href="https://github.com/electron/electron-api-demos/releases">Посмотреть все релизы</a> на GitHub
 quick_start:
   title: "Подготовьте приложение <a href='https://github.com/electron/electron-quick-start' target='_blank'>быстрого старта</a> для просмотра Electron в действии:"
   description: Небольшое приложение Electron с полезными нотациями.
@@ -164,20 +159,16 @@ clipboard:
 fiddle_launch_button:
   launch: Запустить
   launch_in_fiddle: Запустить в Fiddle
-or: или
 pages:
   '/':
-    title: Electron | Создавайте свои компьютерные кросс-платформенные приложения при помощи JavaScript, HTML и CSS.
-    description: 'Создавайте свои компьютерные кросс-платформенные приложения при помощи JavaScript, HTML и CSS.'
+    title: Electron | Создавайте кросс-платформенные приложения при помощи JavaScript, HTML и CSS.
+    description: 'Создавайте кросс-платформенные приложения при помощи JavaScript, HTML и CSS.'
   '/apps':
     title: Приложения Electron
     description: Приложения, созданные на Electron
   '/docs':
     title: Документация
     description: Руководства и API справочной документации для последнего релиза Electron
-  '/docs/all':
-    title: Вся документация Electron!
-    description: Все руководства Electron и API документация на единой, поисковой странице.
   '/docs/api':
     title: API
     description: Руководства и API справочной документации для последнего релиза Electron

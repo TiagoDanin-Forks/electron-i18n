@@ -6,37 +6,34 @@
 
 レンダラープロセスでは、現在実行中のオペレーティングシステムのネイティブ通知 API を使用する、[HTML5 通知 API](https://notifications.spec.whatwg.org/) で通知を送信して表示できます。
 
-メインプロセスに通知を表示するには、 [通知](../api/notification.md) モジュールを使用する必要があります。
+メインプロセスで通知を表示するには、[Notification](../api/notification.md) モジュールを使用する必要があります。
 
 ## サンプル
 
 ### レンダラープロセスで通知を表示する
 
-[クイックスタートガイド](quick-start.md) の作業用 Electron アプリケーションにおいて、`index.html` ファイルの `</body>` タグを閉じている所の前に以下の行を追加してください。
+[クイックスタートガイド](quick-start.md) の作業用アプリケーションから始めることにして、 `index.html` ファイルの `</body>` タグを閉じる手前に以下の行を追加します。
 
 ```html
 <script src="renderer.js"></script>
 ```
 
-`renderer.js` ファイルを追加します。
+…そして `renderer.js` ファイルを追加します。
 
 ```javascript fiddle='docs/fiddles/features/notifications/renderer'
-const myNotification = new Notification('Title', {
-  body: 'Notification from the Renderer process'
-})
+const NOTIFICATION_TITLE = 'Title'
+const NOTIFICATION_BODY = 'Notification from the Renderer process. Click to log to console.'
+const CLICK_MESSAGE = 'Notification clicked'
 
-myNotification.onclick = () => {
-  console.log('Notification clicked')
-}
+new Notification(NOTIFICATION_TITLE, { body: NOTIFICATION_BODY })
+  .onclick = () => console.log(CLICK_MESSAGE)
 ```
 
 Electron アプリケーションを起動すると、通知が表示されます。
 
 ![レンダラープロセスでの通知](../images/notification-renderer.png)
 
-コンソールを開いてから通知をクリックすると、`onclick` イベントをトリガーした後に生成されたメッセージが表示されます。
-
-![通知の onclick メッセージ](../images/message-notification-renderer.png)
+さらに、通知をクリックすると、DOM が更新されて "Notification clicked!" と表示されます。
 
 ### メインプロセスで通知を表示する
 
@@ -45,18 +42,17 @@ Electron アプリケーションを起動すると、通知が表示されま�
 ```javascript fiddle='docs/fiddles/features/notifications/main'
 const { Notification } = require('electron')
 
+const NOTIFICATION_TITLE = 'Basic Notification'
+const NOTIFICATION_BODY = 'Notification from the Main process'
+
 function showNotification () {
-  const notification = {
-    title: 'Basic Notification',
-    body: 'Notification from the Main process'
-  }
-  new Notification(notification).show()
+  new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY }).show()
 }
 
 app.whenReady().then(createWindow).then(showNotification)
 ```
 
-Electron アプリケーションを起動すると、通知が表示されます。
+Electron アプリケーションを起動すると、以下のようなシステム通知が表示されるでしょう。
 
 ![メインプロセスでの通知](../images/notification-main.png)
 
@@ -76,7 +72,7 @@ Electronは、アプリケーションユーザーモデル ID の作業を自�
 
 #### 高度な通知
 
-最近のバージョンの Windows では、カスタムテンプレート、イメージ、その他の柔軟な要素を使用した高度な通知が可能です。 これらの通知を (メインプロセスやレンダラープロセスから) 送信するには、[electron-windows-notification](https://github.com/felixrieseberg/electron-windows-notifications) ユーザーランドモジュールを使用します。これは、`ToastNotification` と `TileNotification` オブジェクトを送るネイティブ Node アドオンです。
+Windows の以降のバージョンでは、カスタムテンプレート、イメージ、その他の柔軟な要素を使用した高度な通知が可能です。 これらの通知を (メインプロセスかレンダラープロセスから) 送信するには、`ToastNotification` と `TileNotification` オブジェクトを送るネイティブ Node アドオンを使用する、[electron-windows-notification](https://github.com/felixrieseberg/electron-windows-notifications) ユーザーランドモジュールを使用します。
 
 ボタンを含む通知は `electron-windows-notifications` で機能しますが、返信を処理するには [`electron-windows-interactive-notifications`](https://github.com/felixrieseberg/electron-windows-interactive-notifications) を使用する必要があります。これにより、必要な COM コンポーネントを登録し、入力したユーザーデータを使用して Electron アプリを呼び出すことができます。
 
@@ -92,10 +88,6 @@ macOS 上での通知は簡単ですが、[通知に関する Apple のヒュー
 
 通知サイズは256バイトに制限されており、その制限を超えると切り捨てられることに注意してください。
 
-#### 高度な通知
-
-macOS の以降のバージョンでは、ユーザがすぐに通知に返信できるように、入力フィールドつきの通知を利用できます。 入力フィールドつきの通知を送信するためには、[node-mac-notifier][node-mac-notifier] ユーザーランドモジュールを使用します。
-
 #### おやすみモード / セッションステート
 
 通知を送信することが許可されているかどうかを検出するには、[electron-notification-state][electron-notification-state] ユーザーランドモジュールを使用します。
@@ -107,8 +99,6 @@ macOS の以降のバージョンでは、ユーザがすぐに通知に返信�
 通知は、[デスクトップ通知仕様][notification-spec] (Cinnamon、Enlightenment、Unity、GNOME、KDE) に従ってデスクトップ環境の通知を表示できる `libnotify` を使用して送信されます。
 
 [apple-notification-guidelines]: https://developer.apple.com/macos/human-interface-guidelines/system-capabilities/notifications/
-
-[node-mac-notifier]: https://github.com/CharlieHess/node-mac-notifier
 
 [electron-notification-state]: https://github.com/felixrieseberg/electron-notification-state
 

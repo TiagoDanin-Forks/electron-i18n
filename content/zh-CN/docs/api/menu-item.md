@@ -6,12 +6,12 @@
 
 有关示例, 请参见 [` Menu `](menu.md)。
 
-### `new MenuItem(可选)`
+### `new MenuItem(options)`
 
 * `选项` 对象
-  * `click` Function (optional) - Will be called with `click(menuItem, browserWindow, event)` when the menu item is clicked.
-    * `menuItem` 菜单项
-    * `browserWindow` [BrowserWindow](browser-window.md) | undefined - This will not be defined if no window is open.
+  * `click` 函数(可选) - 单击菜单项时，将用 `click(menuItem, browserWindow, event)` 调用。
+    * `menuItem` MenuItem
+    * `browserWindow` [BrowserWindow](browser-window.md) |未定义 - 如果没有打开窗口，则无法定义此定义。
     * `event` [KeyboardEvent](structures/keyboard-event.md)
   * `role` String (optional) - Can be `undo`, `redo`, `cut`, `copy`, `paste`, `pasteAndMatchStyle`, `delete`, `selectAll`, `reload`, `forceReload`, `toggleDevTools`, `resetZoom`, `zoomIn`, `zoomOut`, `togglefullscreen`, `window`, `minimize`, `close`, `help`, `about`, `services`, `hide`, `hideOthers`, `unhide`, `quit`, `startSpeaking`, `stopSpeaking`, `zoom`, `front`, `appMenu`, `fileMenu`, `editMenu`, `viewMenu`, `shareMenu`, `recentDocuments`, `toggleTabBar`, `selectNextTab`, `selectPreviousTab`, `mergeAllWindows`, `clearRecentDocuments`, `moveTabToNewWindow` or `windowMenu` - Define the action of the menu item, when specified the `click` property will be ignored. 参见 [roles](#roles)
   * ` type `String (可选)-可以是 ` normal `、` separator `、` submenu `、` checkbox ` 或 ` radio `。
@@ -28,8 +28,8 @@
   * `sharingItem` SharingItem (optional) _macOS_ - The item to share when the `role` is `shareMenu`.
   * `submenu` (MenuItemConstructorOptions[] | [Menu](menu.md)) (optional) - Should be specified for `submenu` type menu items. If `submenu` is specified, the `type: 'submenu'` can be omitted. 如果该值不属于[`Menu`](menu.md)，它将被函数`Menu.buildFromTemplate`自动转换。
   * `id` String (optional) - Unique within a single menu. If defined then it can be used as a reference to this item by the position attribute.
-  * `before` String[] (optional) - Inserts this item before the item with the specified label. If the referenced item doesn't exist the item will be inserted at the end of  the menu. Also implies that the menu item in question should be placed in the same “group” as the item.
-  * `after` String[] (optional) - Inserts this item after the item with the specified label. 如果引用值不存在，那么该菜单项会插在这个菜单的尾部。
+  * `before` String[] (optional) - Inserts this item before the item with the specified label. 如果引用值不存在，那么该菜单项会插在这个菜单的尾部。 这还意味着，菜单项应该被放置在与引用项相同的组中。
+  * `after` String[] (可选) - 在指定的标签之后插入菜单项。 如果引用值不存在，那么该菜单项会插在这个菜单的尾部。
   * `beforeGroupContaining` String[] (optional) - Provides a means for a single context menu to declare the placement of their containing group before the containing group of the item with the specified label.
   * `afterGroupContaining` String[] (optional) - Provides a means for a single context menu to declare the placement of their containing group after the containing group of the item with the specified label.
 
@@ -47,15 +47,15 @@ Every menu item must have either a `role`, `label`, or in the case of a separato
 
 `role ` 属性可以具有以下值:
 
-* `撤消`
+* `undo - 撤销。`
 * `about` - Trigger a native about panel (custom message box on Window, which does not provide its own).
-* `重做`
-* `cut`
-* `copy`
-* `paste`
+* `redo`
+* `cut -  剪切。`
+* `copy - 复制。`
+* `paste - 粘贴。`
 * `pasteAndMatchStyle`
-* `selectAll`
-* `delete`
+* `selectAll - 全选。`
+* `delete -删除`
 * ` minimize ` - 最小化当前窗口。
 * `close` - 关闭当前窗口.
 * `quit` - 退出程序
@@ -66,11 +66,11 @@ Every menu item must have either a `role`, `label`, or in the case of a separato
 * `resetzoom` - 将主页的缩放级别重置为初始大小.
 * `zoomin` - 主页面放大 10%.
 * `zoomout` -主页面缩小 10%.
-* `toggleSpellChecker` - Enable/disable builtin spell checker.
-* `fileMenu` - Whole default "File" menu (Close / Quit)
+* `toggleSpellChecker` - 启用/禁用内置拼写检查器。
+* `fileMenu` - 默认的“文件”菜单（关闭/退出）
 * `editMenu`-默认的 "编辑" 菜单 (包括撤消、复制等)
-* `viewMenu` - Whole default "View" menu (Reload, Toggle Developer Tools, etc.)
-* `windowMenu` - Whole default "Window" menu (Minimize, Zoom, etc.).
+* `viewMenu` - 默认的“视图”菜单（包括重新加载、开发者工具等）
+* `windowMenu` - 默认的“窗口”菜单（包括最小化、缩放等）
 
 The following additional roles are available on _macOS_:
 
@@ -128,7 +128,7 @@ A `Menu` (optional) containing the menu item's submenu, if present.
 
 #### `menuItem.role`
 
-`String`（可选） 指出菜单项的角色 Can be `undo`, `redo`, `cut`, `copy`, `paste`, `pasteAndMatchStyle`, `delete`, `selectAll`, `reload`, `forceReload`, `toggleDevTools`, `resetZoom`, `zoomIn`, `zoomOut`, `togglefullscreen`, `window`, `minimize`, `close`, `help`, `about`, `services`, `hide`, `hideOthers`, `unhide`, `quit`, `startSpeaking`, `stopSpeaking`, `zoom`, `front`, `appMenu`, `fileMenu`, `editMenu`, `viewMenu`, `recentDocuments`, `toggleTabBar`, `selectNextTab`, `selectPreviousTab`, `mergeAllWindows`, `clearRecentDocuments`, `moveTabToNewWindow` or `windowMenu`
+`String`（可选） 指出菜单项的角色 可为 `undo`, `redo`, `cut`, `copy`, `paste`, `pasteAndMatchStyle`, `delete`, `selectAll`, `reload`, `forceReload`, `toggleDevTools`, `resetZoom`, `zoomIn`, `zoomOut`, `togglefullscreen`, `window`, `minimize`, `close`, `help`, `about`, `services`, `hide`, `hideOthers`, `unhide`, `quit`, `startSpeaking`, `stopSpeaking`, `zoom`, `front`, `appMenu`, `fileMenu`, `editMenu`, `viewMenu`, `recentDocuments`, `toggleTabBar`, `selectNextTab`, `selectPreviousTab`, `mergeAllWindows`, `clearRecentDocuments`, `moveTabToNewWindow` 或 `windowMenu`
 
 #### `menuItem.accelerator`
 

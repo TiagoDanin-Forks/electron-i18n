@@ -11,7 +11,7 @@ Por ejemplo:
 ```javascript
 const { session } = require('electron')
 
-// Busca todas las cookies.
+// Query all cookies.
 session.defaultSession.cookies.get({})
   .then((cookies) => {
     console.log(cookies)
@@ -19,7 +19,7 @@ session.defaultSession.cookies.get({})
     console.log(error)
   })
 
-// Consulta todas las cookies asociadas con un url especifica.
+// Query all cookies associated with a specific url.
 session.defaultSession.cookies.get({ url: 'http://www.github.com' })
   .then((cookies) => {
     console.log(cookies)
@@ -27,8 +27,8 @@ session.defaultSession.cookies.get({ url: 'http://www.github.com' })
     console.log(error)
   })
 
-// Establece un cookie con los datos de la misma.
-// puede sobrescriba cookies iguales si existen.
+// Set a cookie with the given cookie data;
+// may overwrite equivalent cookies if they exist.
 const cookie = { url: 'http://www.github.com', name: 'dummy_name', value: 'dummy' }
 session.defaultSession.cookies.set(cookie)
   .then(() => {
@@ -48,7 +48,7 @@ Devuelve:
 
 * `event` Event
 * `cookie` [Cookie](structures/cookie.md) - La cookie que se ha cambiado.
-* `cause` String - The cause of the change with one of the following values:
+* `cause` String - La causa del cambio con uno de los siguientes valores:
   * `explicit` - La cookie se cambió directamente por la acción de un consumidor.
   * `overwrite` - La cookie se eliminó automáticamente debido a una operación insertada que la sobreescribió.
   * `expired` - La cookie se eliminó automáticamente debido a que expiró.

@@ -3,7 +3,7 @@ title: Electron 8.0.0
 author:
   - jkleinsc
   - sofianguía
-date: '04-02-2020'
+date: '2020-02-04'
 ---
 
 ¡Electron 8.0.0 ha sido liberado! Incluye actualizaciones a Chromium `80`, V8 `8.0`y Node.js `12.13.0`. ¡Hemos añadido el corrector ortográfico integrado de Chrome y mucho más!
@@ -30,7 +30,7 @@ El equipo de Electron está encantado de anunciar el lanzamiento de Electron 8.0
 
 Vea las [notas de lanzamiento 8.0.0](https://github.com/electron/electron/releases/tag/v8.0.0) para una lista completa de nuevas características y cambios.
 
-## Cambios de última hora
+## Restaurar archivos borrados
 
 * Mostrar el nombre del módulo en advertencia de desaprobación para los módulos que se ajustan al contexto. [#21952](https://github.com/electron/electron/pull/21952)
     * Esto es trabajo continuo para un futuro requisito de que los módulos nativos de Node cargados en el proceso de renderizado sean [N-API](https://nodejs.org/api/n-api.html) o [Context Aware](https://nodejs.org/api/addons.html#addons_context_aware_addons). La información completa y la línea temporal propuesta se detallan en [este problema](https://github.com/electron/electron/issues/18397).

@@ -12,7 +12,6 @@
   * Sharing ideas with other Electron app developers
   * And more!
 * [`electron`](https://discuss.atom.io/c/electron) category on the Atom forums
-* `#atom-shell` канал на Freenode
 * `#electron` канал на [Atom Slack](https://discuss.atom.io/t/join-us-on-slack/16638?source_topic_id=25406)
 * [`electron-ru`](https://telegram.me/electron_ru) *(Русский)*
 * [`electron-br`](https://electron-br.slack.com) *(Бразильский Португальский)*
@@ -40,9 +39,9 @@
 
 ### Поддерживаемые версии
 
+* 13.x.y
 * 12.x.y
 * 11.x.y
-* 10.x.y
 
 ### Конец жизни
 
@@ -58,7 +57,7 @@
 
 ### macOS
 
-Только 64-битные файлы предоставляются для macOS, и минимальная поддерживаемая версия macOS — macOS 10.10 (Yosemite).
+对 macOS 仅提供64位版本，并且只支持 macOS 10.11 (El Capitan) 以及更高版本。.
 
 Native support for Apple Silicon (`arm64`) devices was added in Electron 11.0.0.
 

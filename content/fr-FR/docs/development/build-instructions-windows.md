@@ -1,8 +1,8 @@
 # Instructions de Build (Windows)
 
-Suivez les indications ci-dessous pour compiler Electron sur Windows.
+Follow the guidelines below for building **Electron itself** on Windows, for the purposes of creating custom Electron binaries. For bundling and distributing your app code with the prebuilt Electron binaries, see the [application distribution][application-distribution] guide.
 
-## Prerequisites
+## Prérequis
 
 * Windows 10 / Server 2012 R2 ou supérieur
 * Visual Studio 2017 15.7.2 ou plus - [télécharger VS 2019 Community Edition gratuitement](https://www.visualstudio.com/vs/)
@@ -94,3 +94,5 @@ Assurez-vous d'avoir installé `pywin32` avec `pip install pywin32`.
 ### Construire des scripts pendent jusqu'à ce que le bouton soit appuyé
 
 Ce bug est une « fonctionnalité » de l'invite de commande de Windows. Cela se produit lorsque vous cliquez dans la fenêtre d'invite avec l'option `Édition rapide` et est destiné à permettre la sélection et la copie du texte de sortie facilement. Puisque chaque clic accidentel met en pause le processus de construction, vous pouvez désactiver cette fonctionnalité dans les propriétés de l'invite de commande.
+
+[application-distribution]: ../tutorial/application-distribution.md

@@ -12,7 +12,7 @@
 
 ### 在渲染进程中显示通知
 
-假定你有一个 [Quick Start Guide](quick-start.md) 中的 Electron 应用程序， 添加以下内容到 `index.html` 文件在闭合 `</body>` 标签前：
+从 [Quick Start Guide](quick-start.md) 示例的应用程序开始，将以下行添加到 `index.html` 文件：
 
 ```html
 <script src="renderer.js"></script>
@@ -21,22 +21,18 @@
 并添加 `renderer.js` 文件：
 
 ```javascript fiddle='docs/fiddles/features/notifications/renderer'
-const myNotification = new Notification('Title', {
-  body: 'Notification from the Renderer process'
-})
+const NOTIFICATION_TITLE = 'Title'
+const NOTIFICATION_BODY = 'Notification from the Renderer process. Click to log to console.'
+const CLICK_MESSAGE = 'Notification clicked'
 
-myNotification.onclick = () => {
-  console.log('Notification clicked')
-}
+new Notification(NOTIFICATION_TITLE, { body: NOTIFICATION_BODY }).onclick = () => console.log(CLICK_MESSAGE)
 ```
 
 启动 Electron 应用程序后，您应该能看到通知：
 
 ![渲染进程中的通知](../images/notification-renderer.png)
 
-如果你打开控制台，然后单击通知。你将看到触发 `onclick` 事件后生成的消息：
-
-![在通知上点击消息](../images/message-notification-renderer.png)
+此外，如果您点击通知，DOM将更新以显示“Notification clicked!”
 
 ### 在主进程中显示通知
 
@@ -45,18 +41,17 @@ myNotification.onclick = () => {
 ```javascript fiddle='docs/fiddles/features/notifications/main'
 const { Notification } = require('electron')
 
-function showNotification ()
-  const notification = {
-    title: 'Basic Notification',
-    body: 'Notification from the Main process'
-  }
-  new Notification(notification).show()
+const NOTIFICATION_TITLE = 'Basic Notification'
+const NOTIFICATION_BODY = 'Notification from the Main process'
+
+function showNotification () {
+  new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY }).show()
 }
 
 app.whenReady().then(createWindow).then(showNotification)
 ```
 
-启动 Electron 应用程序后，您应该能看到通知：
+启动 Electron 应用程序后，您应该能看到系统通知：
 
 ![主进程中的通知](../images/notification-main.png)
 
@@ -66,7 +61,7 @@ app.whenReady().then(createWindow).then(showNotification)
 
 ### Windows
 
-* On Windows 10, a shortcut to your app with an [Application User Model ID][app-user-model-id] must be installed to the Start Menu. 这可能会在开发过程中被过度杀死，因此将 `node_modules\electron\dist\electron.exe` 添加到您的开始菜单中也做到了 的技巧。 在Explorer, 右键单击和“Pin 开始菜单”中导航到文件。 然后您需要添加 `app.setAppUserModelId(process.execPath)` 到主进程才能看到通知。
+* 在 Windows 10 上，您的应用程序的快捷方式必须安装到启动菜单中，包含一个 [Application User Model ID][app-user-model-id]. 这可能会在开发过程中被过度杀死，因此将 `node_modules\electron\dist\electron.exe` 添加到您的开始菜单中也做到了 的技巧。 在Explorer, 右键单击和“Pin 开始菜单”中导航到文件。 然后您需要添加 `app.setAppUserModelId(process.execPath)` 到主进程才能看到通知。
 * 在 Windows 8.1 和 Windows 8 上，带有 [ 应用程序用户模型ID（Application User Model ID）][app-user-model-id] 的应用程序快捷方式必须被添加到开始屏幕上。 但是请注意，它不需要被固定到开始屏幕。
 * 在 Windows 7 上, 通知通过视觉上类似于较新系统原生的一个自定义的实现来工作。
 
@@ -92,10 +87,6 @@ MacOS上的通知是最直接的，但你应该注意[苹果关于通知的人�
 
 请注意，通知的大小限制为256个字节，如果超过该限制，则会被截断。
 
-#### 高级通知
-
-后来的 macOS 版本允许有一个输入字段的通知，允许用户快速回复通知。 为了通过输入字段发送通知，请使用用户区模块[node-mac-notifier][node-mac-notifier]。
-
 #### 勿扰 / 会话状态
 
 要检测是否允许发送通知，请使用用户区模块 [electron-notification-state][electron-notification-state]。
@@ -107,8 +98,6 @@ MacOS上的通知是最直接的，但你应该注意[苹果关于通知的人�
 通知是通过`libnotify`发送的，libnotify可以在任何实现了[桌面通知规范（Desktop Notifications Specification）][notification-spec]的桌面环境中发送通知，包括Cinnamon、Enlightenment、Unity、GNOME、KDE
 
 [apple-notification-guidelines]: https://developer.apple.com/macos/human-interface-guidelines/system-capabilities/notifications/
-
-[node-mac-notifier]: https://github.com/CharlieHess/node-mac-notifier
 
 [electron-notification-state]: https://github.com/felixrieseberg/electron-notification-state
 

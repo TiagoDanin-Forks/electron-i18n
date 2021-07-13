@@ -23,7 +23,7 @@ describe('i18n.docs', () => {
   })
 
   it('sets githubUrl on every doc', () => {
-    const base = 'https://github.com/electron/electron/tree/master'
+    const base = 'https://github.com/electron/electron/tree/main'
     const docs = i18n.docs['en-US']
     docs['/docs/api/accelerator'].githubUrl.should.equal(
       `${base}/docs/api/accelerator.md`
@@ -168,6 +168,15 @@ describe('API Docs', () => {
     const $ = cheerio.load(api.html)
     const link = $('a[href*="glossary"]').first()
     link.attr('href').should.equal('/docs/glossary#main-process')
+  })
+
+  // since we use remark-relative-links in markdown, the parsing logic
+  // for definition nodes is separate from link nodes in the AST
+  it('fixes relative definitions in docs', () => {
+    const api = i18n.docs['en-US']['/docs/tutorial/installation']
+    const $ = cheerio.load(api.html)
+    const link = $('a[href*="electron-versioning"]').first()
+    link.attr('href').should.equal('/docs/tutorial/electron-versioning')
   })
 
   it('fixes relative images in docs', () => {

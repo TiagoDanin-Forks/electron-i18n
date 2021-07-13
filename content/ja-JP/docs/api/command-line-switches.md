@@ -58,18 +58,24 @@ Chromiumが隠れたページのレンダラープロセスの優先順位を下
 
 以下の API の呼び出し元スタックログを有効にします (イベントのフィルタリング)。
 
-- `desktopCapturer.getSources()` / `desktop-capturer-get-sources`
-- `remote.require()` / `remote-require`
-- `remote.getGlobal()` / `remote-get-builtin`
-- `remote.getBuiltin()` / `remote-get-global`
-- `remote.getCurrentWindow()` / `remote-get-current-window`
-- `remote.getCurrentWebContents()` / `remote-get-current-web-contents`
+* `desktopCapturer.getSources()` / `desktop-capturer-get-sources`
+* `remote.require()` / `remote-require`
+* `remote.getGlobal()` / `remote-get-builtin`
+* `remote.getBuiltin()` / `remote-get-global`
+* `remote.getCurrentWindow()` / `remote-get-current-window`
+* `remote.getCurrentWebContents()` / `remote-get-current-web-contents`
 
 ### --enable-logging
 
 コンソールにChromiumのログを出力します。
 
 このスイッチは、ユーザのアプリがロードされるよりも早く解析されるため、`app.commandLine.appendSwitch` で使用することはできませんが、同じ効果を得るために `ELECTRON_ENABLE_LOGGING` 環境変数を設定することができます。
+
+### --force-fieldtrials=`trials`
+
+フィールド トライアルを強制的に有効または無効にします。
+
+例: `WebRTC-Audio-Red-For-Opus/Enabled/`
 
 ### --host-rules=`rules`
 
@@ -120,7 +126,7 @@ $ electron --js-flags="--harmony_proxies --harmony_collections" your-app
 
 ### --no-sandbox
 
-既定で有効化された Chromium サンドボックスを無効化します。 テスト時のみ使用すべきです。
+Chromium の [サンドボックス](https://www.chromium.org/developers/design-documents/sandbox) を無効化します。 レンダラープロセスと Chromium ヘルパープロセスにサンドボックスなしの実行を強制します。 テスト時のみ使用すべきです。
 
 ### --proxy-bypass-list=`hosts`
 

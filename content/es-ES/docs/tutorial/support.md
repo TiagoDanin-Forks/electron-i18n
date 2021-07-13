@@ -12,7 +12,6 @@ Si busca ayuda con la programación, respuestas a preguntas o conversaciones con
   * Compartir ideas con otros programados de aplicaciones Electron
   * Y más!
 * Categoría [`electron`](https://discuss.atom.io/c/electron) en los foros de Atom
-* Canal `#atom-shell` en Freenode
 * `#electron` canal en [Atom's Slack](https://discuss.atom.io/t/join-us-on-slack/16638?source_topic_id=25406)
 * [`electron-ru`](https://telegram.me/electron_ru) *(Ruso)*
 * [`electron-br`](https://electron-br.slack.com) *(Portugués Brasileño)*
@@ -40,9 +39,9 @@ Cuando se cambia o elimina una API de una manera que rompe la funcionalidad exis
 
 ### Versiones soportadas actualmente
 
+* 13.x.y
 * 12.x.y
 * 11.x.y
-* 10.x.y
 
 ### Fin de vida
 
@@ -58,7 +57,7 @@ Las siguientes plataformas son apoyadas por Electron:
 
 ### macOS
 
-Sólo se proporcionan binarios de 64bit para macOS, y la versión mínima de macOS soportada es macOS 10.10 (Yosemite).
+Only 64bit binaries are provided for macOS, and the minimum macOS version supported is macOS 10.11 (El Capitan).
 
 El soporte nativo para dispositivos Apple Silicon (`arm64`) fue agregado en Electron 11.0.0.
 
@@ -70,7 +69,7 @@ Ambos binarios `ia32` (`x86`) y `x64` (`amd64`) se proporcionan para Windows. [S
 
 ### Linux
 
-The prebuilt binaries of Electron are built on Ubuntu 18.04.
+Los binarios preconstruido de Electron están construidos en Ubuntu 18.04.
 
 Si el compilado binario puede correr en una distribución depende de que la distribución incluye las librerías a las que está ligada Electron en la plataforma construida, así que solo hay garantía de que Ubuntu 18.04 trabaje, pero las siguientes plataformas también están verificadas para correr el precompilado binario de Electron:
 

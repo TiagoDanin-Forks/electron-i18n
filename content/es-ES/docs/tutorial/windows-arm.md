@@ -1,6 +1,6 @@
 # Ventanas 10 en brazo
 
-Si tu aplicación se ejecuta con Electron 6.0.8 o posterior, ahora puedes construirla para Windows 10 en Arm. This considerably improves performance, but requires recompilation of any native modules used in your app. It may also require small fixups to your build and packaging scripts.
+Si tu aplicación se ejecuta con Electron 6.0.8 o posterior, ahora puedes construirla para Windows 10 en Arm. Esto aumenta considerablemente el rendimiento, pero necesitará recopilar cualquier módulo nativo usado en tu app. It may also require small fixups to your build and packaging scripts.
 
 ## Ejecutar una aplicación básica
 
@@ -18,9 +18,9 @@ Lots of Windows-specific code contains if... else logic that selects between eit
 
 ```js
 if (process.arch === 'x64') {
-  // Haz algo de 64-bit...
+  // Do 64-bit thing...
 } else {
-  // Hacer algo de 32-bits...
+  // Do 32-bit thing...
 }
 ```
 
@@ -50,7 +50,7 @@ vs_installer.exe ^
 --add Microsoft.VisualStudio.Component.VC.ATLMFC ^
 --add Microsoft.VisualStudio.Component.VC.Tools.ARM64 ^
 --add Microsoft.VisualStudio.Component.VC.MFC.ARM64 ^
---includeRecomendado
+--includeRecommended
 ```
 
 #### Crear un símbolo de comando de compilación cruzada
@@ -64,11 +64,11 @@ Establecer `npm_config_arch=arm64` en el entorno crea el arm64 correcto `. bj` a
 Si se hace con éxito, el símbolo del comando debería imprimir algo similar al de inicio del sistema:
 
 ```bat
-**************************************************************************
-** Visual Studio 2017 Developer Commpt v15.9.15
+**********************************************************************
+** Visual Studio 2017 Developer Command Prompt v15.9.15
 ** Copyright (c) 2017 Microsoft Corporation
-**************************************************************************************************************
-[vcvarsall.bat] Entorno inicializado para: 'x64_arm64'
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x64_arm64'
 ```
 
 Si desea desarrollar su aplicación directamente en un Windows en un dispositivo Arm, sustituya `vcvarsx86_arm64. en` en _Objetivo_ para que la compilación cruzada pueda ocurrir con la emulación x86 del dispositivo.

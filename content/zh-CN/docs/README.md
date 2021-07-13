@@ -10,34 +10,28 @@
 
 ## 指南和教程
 
-### 快速入门
+### 入门指南
 
-* [快速启动指南](tutorial/quick-start.md)
-  * [前提条件](tutorial/quick-start.md#prerequisites)
-  * [创建基本应用程序](tutorial/quick-start.md#create-a-basic-application)
-  * [运行您的应用程序](tutorial/quick-start.md#run-your-application)
-  * [打包并分发应用程序](tutorial/quick-start.md#package-and-distribute-the-application)
+* [简介](tutorial/introduction.md)
+* [快速入门](tutorial/quick-start.md)
+* [流程模型](tutorial/process-model.md)
 
 ### 学习基础知识
 
-* [Electron's Process Model](tutorial/quick-start.md#application-architecture)
-  * [主进程和渲染器进程](tutorial/quick-start.md#main-and-renderer-processes)
-  * [Electron API](tutorial/quick-start.md#electron-api)
-  * [Node.js API](tutorial/quick-start.md#nodejs-api)
 * 为你的应用添加功能
   * [通知（Notifications）](tutorial/notifications.md)
-  * [最近文档（Recent Documents）](tutorial/recent-documents.md)
+  * [最近文档](tutorial/recent-documents.md)
   * [应用程序进程](tutorial/progress-bar.md)
   * [自定义 Dock 菜单](tutorial/macos-dock.md)
   * [自定义 Windows 任务栏](tutorial/windows-taskbar.md)
   * [自定义 Linux 桌面动作](tutorial/linux-desktop-actions.md)
   * [键盘快捷键](tutorial/keyboard-shortcuts.md)
   * [离线/在线 侦测](tutorial/online-offline-events.md)
-  * [针对 macOS系统 BrowserWindows的展示文件](tutorial/represented-file.md)
+  * [macOS BrowserWindows 的代表文件](tutorial/represented-file.md)
   * [原生文件拖放](tutorial/native-file-drag-drop.md)
   * [离屏渲染](tutorial/offscreen-rendering.md)
   * [暗黑模式](tutorial/dark-mode.md)
-  * [在 Electron 中嵌入网页](tutorial/web-embeds.md)
+  * [语言](tutorial/web-embeds.md)
 * [模板和命令行界面](tutorial/boilerplates-and-clis.md)
   * [模板与命令行界面](tutorial/boilerplates-and-clis.md#boilerplate-vs-cli)
   * [electron-forge](tutorial/boilerplates-and-clis.md#electron-forge)
@@ -45,21 +39,23 @@
   * [electron-react-boilerplate](tutorial/boilerplates-and-clis.md#electron-react-boilerplate)
   * [其它工具和模板](tutorial/boilerplates-and-clis.md#other-tools-and-boilerplates)
 
-### Advanced steps
+### 高级步骤
 
 * 应用架构
   * [使用原生 Node.js 模块](tutorial/using-native-node-modules.md)
   * [性能策略](tutorial/performance.md)
-  * [Security Strategies](tutorial/security.md)
+  * [安全策略](tutorial/security.md)
+  * [进程沙盒化](tutorial/sandbox.md)
 * [辅助功能](tutorial/accessibility.md)
   * [手动启用辅助功能](tutorial/accessibility.md#manually-enabling-accessibility-features)
 * [测试和调试](tutorial/application-debugging.md)
   * [调试主进程](tutorial/debugging-main-process.md)
-  * [Debugging with Visual Studio Code](tutorial/debugging-vscode.md)
+  * [使用Visual Studio Code调试](tutorial/debugging-vscode.md)
   * [使用 Selenium 和 WebDriver](tutorial/using-selenium-and-webdriver.md)
   * [使用自动化持续集成系统 (CI) 进行测试 (Travis, Jenkins)](tutorial/testing-on-headless-ci.md)
-  * [开发工具扩展程序](tutorial/devtools-extension.md)
+  * [开发者工具扩展](tutorial/devtools-extension.md)
   * [使用自定义驱动程序进行自动化测试](tutorial/automated-testing-with-a-custom-driver.md)
+  * [交互式解释器 (REPL)](tutorial/repl.md)
 * [分发](tutorial/application-distribution.md)
   * [支持平台](tutorial/support.md#supported-platforms)
   * [代码签名](tutorial/code-signing.md)
@@ -118,19 +114,22 @@
 * [ipcMain](api/ipc-main.md)
 * [Menu](api/menu.md)
 * [MenuItem](api/menu-item.md)
-* [网络](api/net.md)
+* [MessageChannelMain](api/message-channel-main.md)
+* [MessagePortMain](api/message-port-main.md)
+* [net](api/net.md)
 * [netLog](api/net-log.md)
-* [nativeTheme](api/native-theme.md)
+* [本地主题](api/native-theme.md)
 * [通知](api/notification.md)
 * [电源监视器](api/power-monitor.md)
 * [省电拦截器 | powerSaveBlocker](api/power-save-blocker.md)
 * [protocol](api/protocol.md)
 * [screen](api/screen.md)
 * [session](api/session.md)
+* [ShareMenu](api/share-menu.md)
 * [systemPreferences](api/system-preferences.md)
 * [触控板](api/touch-bar.md)
 * [Tray](api/tray.md)
-* [网络控制](api/web-contents.md)
+* [webContents](api/web-contents.md)
 * [webFrameMain](api/web-frame-main.md)
 
 ### 渲染进程（网页）可用的模块:

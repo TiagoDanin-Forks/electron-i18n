@@ -36,9 +36,9 @@ La team Electron est excitée d'annoncer la sortie de Electron 12.0.0 ! Vous pou
 
 See the [12.0.0 release notes](https://github.com/electron/electron/releases/tag/v12.0.0) for a full list of new features and changes.
 
-## Breaking Changes
+## Changements de rupture
 
-* Deprecated the `remote` module. It is replaced by [`@electron/remote`](https://github.com/electron/remote). [#25293](https://github.com/electron/electron/pull/25293)
+* Déprécié le module `remote`. It is replaced by [`@electron/remote`](https://github.com/electron/remote). [#25293](https://github.com/electron/electron/pull/25293)
     * If you are currently using the `remote` module, we've written [a guide to migrating to `@electron/remote` here.](https://github.com/electron/remote#migrating-from-remote)
 * Changed the default value of `contextIsolation` to `true`. [#27949](https://github.com/electron/electron/pull/27949)
 * Changed the default value of `worldSafeExecuteJavaScript` to `true`. [#27502](https://github.com/electron/electron/pull/27502)
@@ -56,7 +56,7 @@ Plus d'informations à propos de ces changements et de futurs peuvent être trou
     * Added new `app.runningUnderRosettaTranslation` property to detect when running under rosetta on Apple silicon. [#26444](https://github.com/electron/electron/pull/26444)
     * Added `exitCode` to `render-process-gone` details (app & webContents). [#27677](https://github.com/electron/electron/pull/27677)
 * `BrowserWindow` Changements d'API :
-    * Added `BrowserWindow.isTabletMode()` API. [#25209](https://github.com/electron/electron/pull/25209)
+    * Ajout de l'API `BrowserWindow.isTabletMode()`. [#25209](https://github.com/electron/electron/pull/25209)
     * Added `resized` (Windows/macOS) and `moved` (Windows) events to `BrowserWindow`. [#26216](https://github.com/electron/electron/pull/26216)
     * Added new `system-context-menu` event to allow preventing and overriding the system context menu. [#25795](https://github.com/electron/electron/pull/25795)
     * Added `win.setTopBrowserView()` so that `BrowserView`s can be raised. [#27713](https://github.com/electron/electron/pull/27713)
@@ -68,17 +68,17 @@ Plus d'informations à propos de ces changements et de futurs peuvent être trou
 * `extensions` API changes:
     * Added support for some `chrome.management` APIs. [#25098](https://github.com/electron/electron/pull/25098)
 * `MenuItem` API changes:
-    * Added support for showing macOS share menu. [#25629](https://github.com/electron/electron/pull/25629)
+    * Ajout de la prise en charge de l'affichage du menu de partage macOS. [#25629](https://github.com/electron/electron/pull/25629)
 * `net` API changes:
-    * Added a new `credentials` option for `net.request()`. [#25284](https://github.com/electron/electron/pull/25284)
-    * Added `net.online` for detecting whether there is currently internet connection. [#21004](https://github.com/electron/electron/pull/21004)
+    * Ajout d'une nouvelle option `credentials` pour `net.request()`. [#25284](https://github.com/electron/electron/pull/25284)
+    * Ajout de `net.online` pour détecter s'il existe actuellement une connexion Internet. [#21004](https://github.com/electron/electron/pull/21004)
 * `powerMonitor` API changes:
-    * Added `powerMonitor.onBatteryPower`. [#26494](https://github.com/electron/electron/pull/26494)
+    * Ajout de `powerMonitor.onBatteryPower`. [#26494](https://github.com/electron/electron/pull/26494)
     * Added fast user switching event to powerMonitor on macOS. [#25321](https://github.com/electron/electron/pull/25321)
 * `session` API change :
-    * Added `allowFileAccess` option to `ses.loadExtension()` API. [#27702](https://github.com/electron/electron/pull/27702)
+    * Ajout de l'option `allowFileAccess` à l'API `ses.loadExtension()`. [#27702](https://github.com/electron/electron/pull/27702)
     * Added `display-capture` API for `session.setPermissionRequestHandler`. [#27696](https://github.com/electron/electron/pull/27696)
-    * Added a `disabledCipherSuites` option to `session.setSSLConfig`. [#25818](https://github.com/electron/electron/pull/25818)
+    * Ajout d'une option `disabledCipherSuites` à `session.setSSLConfig`. [#25818](https://github.com/electron/electron/pull/25818)
     * Added `extension-loaded`, `extension-unloaded`, and `extension-ready` events to `session`. [#25385](https://github.com/electron/electron/pull/25385)
     * Added `session.setSSLConfig()` to allow configuring SSL. [#25461](https://github.com/electron/electron/pull/25461)
     * Added support for explicitly specifying `direct`, `auto_detect` or `system` modes in `session.setProxy()`. [#24937](https://github.com/electron/electron/pull/24937)
@@ -96,11 +96,11 @@ Plus d'informations à propos de ces changements et de futurs peuvent être trou
 
 ### Removed/Deprecated Changes
 
-The following APIs have been removed or are now deprecated:
+Les API suivantes ont été supprimées ou sont désormais dépréciées :
 
-* Deprecated the `remote` module. It is replaced by [`@electron/remote`](https://github.com/electron/remote). [#25293](https://github.com/electron/electron/pull/25293)
-* Removed deprecated `crashReporter` APIs. [#26709](https://github.com/electron/electron/pull/26709)
-* Removed links to the Electron website from the default 'Help' menu in packaged apps. [#25831](https://github.com/electron/electron/pull/25831)
+* Déprécié le module `remote`. It is replaced by [`@electron/remote`](https://github.com/electron/remote). [#25293](https://github.com/electron/electron/pull/25293)
+* Suppression des API `crashReporter` dépréciées. [#26709](https://github.com/electron/electron/pull/26709)
+* Suppression des liens vers le site Web Electron du menu "Aide" par défaut dans les applications packagées. [#25831](https://github.com/electron/electron/pull/25831)
 
 ## End of Support for 9.x.y
 

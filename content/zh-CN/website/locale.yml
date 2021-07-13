@@ -26,7 +26,6 @@ keyboard_modal:
   open_new_tab: 在新标签页打开选定的搜索结果
 docs:
   title: Electron 文档
-  description: 在一页内查看所有的 <a href="/docs/all"> 文档 </a> 或查看 <a href="/docs/faq"> 常见问题 </a>。
   guides: "指南：开始使用 Electron"
   api_reference: API 参考
   api_structures: API 结构
@@ -39,7 +38,6 @@ docs:
   propose_change: 改进此文档
   version_history: 版本历史
   translate: 翻译此文档
-  view_all_docs: 在一页查看所有文档
 languages:
   choose_language: 请选择语言
   view_more_details: 查看更多语言
@@ -87,7 +85,7 @@ releases:
   all_releases: 全部发行版
   back_to_index: 返回索引
 electron_is_good:
-  title: Apps users love, built with Electron
+  title: 用户喜爱的应用，以 Electron 构建
   description: 数千个跨行业的组织使用 Electron 构建跨平台软件。
 electron_is_easy:
   title: 比你想象的更简单
@@ -97,7 +95,7 @@ web_technologies:
   description: Electron 基于 Chromium 和 Node.js, 让你可以使用 HTML, CSS 和 JavaScript 构建应用。
 open_source:
   title: 开源
-  description: Electron 是一个由 GitHub 及众多贡献者组成的活跃社区共同维护的开源项目。
+  description: Electron is an open source project maintained by the OpenJS Foundation and an active community of contributors.
 cross_platform:
   title: 跨平台
   description: Electron 兼容 Mac、Windows 和 Linux，可以构建出三个平台的应用程序。
@@ -112,13 +110,10 @@ get_started:
   title: 入门
   description: 初识 Electron，可参考下列资料，了解如何使用 Electron 封装你的前端代码，调用丰富的 API，以及生成安装程序。
 explore:
-  title: 探索 Electron 的 API
-  description: "<a href='https://github.com/electron/electron-api-demos'>Electron API 示例程序</a>采用交互式界面展示了 Electron API 最关键的功能。通过代码样例和提示发掘 Electron 的无限可能，踏上你的开发之旅。"
-  fiddle_title: 借助 Electron Fiddle 深入探索
+  fiddle_title: Try powerful experiments with Electron Fiddle
   see_more_info: 详细了解
 download: 下载
 download_from_github: 从 GitHub 下载
-view_all_releases_on_github: 在 GitHub 上 <a href="https://github.com/electron/electron-api-demos/releases"> 查看所有版本</a>
 quick_start:
   title: "<a href='https://github.com/electron/electron-quick-start' target='_blank'> 快速启动</a> 应用程序，看看 Electron 是如何运转的："
   description: 一个有帮助内容的 Electron 应用。
@@ -133,7 +128,7 @@ headings:
   languages: 语言
 taglines:
   languages: 本地化的内容来自我们强大的全球开发者社区。
-  announcement: 'Black Lives Matter. Support <a href="https://support.eji.org/give/153413/#!/donation/checkout">the Equal Justice Initiative</a> and <a href="/blacklivesmatter">read our statement here</a>.'
+  announcement: '黑人的命也是命。支持 <a href="https://support.eji.org/give/153413/#!/donation/checkout">平等正义倡议</a> ，并 <a href="/blacklivesmatter">在这里宣读我们的声明</a>。'
 help_translate: "帮助我们翻译"
 footer:
   see_the_faq: 查看常见问题
@@ -164,7 +159,6 @@ clipboard:
 fiddle_launch_button:
   launch: 启动
   launch_in_fiddle: 在Fiddle中启动
-or: 或
 pages:
   '/':
     title: Electron | 使用 JavaScript，HTML 和 CSS 构建跨平台的桌面应用程序。
@@ -175,9 +169,6 @@ pages:
   '/docs':
     title: ' 文档 '
     description: 最新的 Electron 的指南和 API 参考文档
-  '/docs/all':
-    title: 所有的 Electron 的文档
-    description: 所有 Electron 的指南和 API 文档在一个单独的可搜索的页面。
   '/docs/api':
     title: API
     description: 最新的 Electron 的指南和 API 参考文档
@@ -216,7 +207,7 @@ pages:
   '/donors':
     title: 捐赠者
   '/blacklivesmatter':
-    title: Black Lives Matter
+    title: 黑人的命也是命
 landing:
   get_started: 入门
   fiddle:

@@ -12,7 +12,7 @@ Electron の脆弱性を報告する正しい方法については [SECURITY.md]
 
 ## Chromium のセキュリティ問題とアップグレード
 
-Electron は、Chromiumのリリースとは交互に更新しています。 詳しくは、[Electron リリースケイデンスのブログ記事](https://electronjs.org/blog/12-week-cadence) を参照してください。
+Electron は、Chromium のリリースとは交互に更新しています。 詳しくは、[Electron リリースケイデンスのブログ記事](https://electronjs.org/blog/12-week-cadence) を参照してください。
 
 ## セキュリティはみんなの責任
 
@@ -22,7 +22,7 @@ Electron は、Chromiumのリリースとは交互に更新しています。 �
 
 * **あなたのアプリの依存関係の評価する。** NPM は 50万もの再利用できるパッケージを提供しています。一方、あなたは信頼するサードパーティのライブラリを選択する責任があります。 あなたが既知の脆弱性の影響を受けるライブラリを利用する場合や、あまりメンテナンスされていないコードに頼る場合、あなたのアプリケーションのセキュリティは低下し危険な状態になります。
 
-* **セキュアコーディングプラクティスの採用。** あなたのアプリケーションの防衛の第一歩はあなたのコードです。 クロスサイトスクリプティング(XSS) のような共通WEB脆弱性は、Electronアプリケーション上でセキュリティの影響度が高くなります。そのため、セキュアなソフトウェア開発のベストプラクティスの採用やセキュリティテストの実施が強く求められます。
+* **セキュアコーディングプラクティスの採用。** あなたのアプリケーションの防衛の第一歩はあなたのコードです。 クロスサイトスクリプティング (XSS) のような一般的なウェブの脆弱性は Electron アプリケーションに大きなセキュリティ上の影響を与えるため、安全なソフトウェア開発のベストプラクティスの採用とセキュリティテストの実施を強く推奨します。
 
 ## 信用されないコンテンツの隔離
 
@@ -78,8 +78,13 @@ browserWindow.loadURL('http://example.com')
 browserWindow.loadURL('https://example.com')
 ```
 
-```html<!-- NG --><script crossorigin src="http://example.com/react.js"></script>
-<link rel="stylesheet" href="http://example.com/style.css"><!-- OK --><script crossorigin src="https://example.com/react.js"></script>
+```html
+<!-- NG -->
+<script crossorigin src="http://example.com/react.js"></script>
+<link rel="stylesheet" href="http://example.com/style.css">
+
+<!-- OK -->
+<script crossorigin src="https://example.com/react.js"></script>
 <link rel="stylesheet" href="https://example.com/style.css">
 ```
 
@@ -120,7 +125,12 @@ const mainWindow = new BrowserWindow({
 mainWindow.loadURL('https://example.com')
 ```
 
-```html<!-- NG --><webview nodeIntegration src="page.html"></webview><!-- OK --><webview src="page.html"></webview>
+```html
+<!-- NG -->
+<webview nodeIntegration src="page.html"></webview>
+
+<!-- OK -->
+<webview src="page.html"></webview>
 ```
 
 Node.js integration を無効にすると、ウェブサイトへ Node.js モジュールまたは機能を使用する API を確認することができます。 プリロードスクリプトは引き続き `require` と他の Node.js の機能にアクセスできるため、開発者はコンテンツをリモートにロードするカスタム API を確認します。
@@ -146,7 +156,7 @@ Electron は Chromium の [コンテンツスクリプト](https://developer.chr
 
 ### なぜ & 方法を？
 
-`contextIsolation` が何であるかと、有効にする方法については、 [コンテキストIsolation](context-isolation.md) ドキュメントを参照してください。
+`contextIsolation` が何であるのか及びこれを有効にする方法についての情報は、[コンテキスト隔離](context-isolation.md) ドキュメントをご参照ください。
 
 ## 4) リモートのコンテンツからセッション権限リクエストを利用する
 
@@ -209,7 +219,12 @@ const mainWindow = new BrowserWindow({
 const mainWindow = new BrowserWindow()
 ```
 
-```html<!-- NG --><webview disablewebsecurity src="page.html"></webview><!-- OK --><webview src="page.html"></webview>
+```html
+<!-- NG -->
+<webview disablewebsecurity src="page.html"></webview>
+
+<!-- OK -->
+<webview src="page.html"></webview>
 ```
 
 ## 6) Content-Security-Policy を定義する
@@ -349,7 +364,12 @@ _Electron のデフォルトを推奨しています_
 
 ### どうすればいいの？
 
-```html<!-- NG --><webview allowpopups src="page.html"></webview><!-- OK --><webview src="page.html"></webview>
+```html
+<!-- NG -->
+<webview allowpopups src="page.html"></webview>
+
+<!-- OK -->
+<webview src="page.html"></webview>
 ```
 
 ## 11) 作成前に WebView のオプションを確認する

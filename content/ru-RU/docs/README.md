@@ -10,20 +10,14 @@
 
 ## Руководство
 
-### Быстрый старт
+### Начало работы
 
-* [Краткое руководство по запуску](tutorial/quick-start.md)
-  * [Требования](tutorial/quick-start.md#prerequisites)
-  * [Создать базовое приложение](tutorial/quick-start.md#create-a-basic-application)
-  * [Запустите приложение](tutorial/quick-start.md#run-your-application)
-  * [Пакет и распространение приложения](tutorial/quick-start.md#package-and-distribute-the-application)
+* [Введение](tutorial/introduction.md)
+* [Руководство для начинающих](tutorial/quick-start.md)
+* [Process Model](tutorial/process-model.md)
 
 ### Изучение основ
 
-* [Electron's Process Model](tutorial/quick-start.md#application-architecture)
-  * [Main и Renderer процессы](tutorial/quick-start.md#main-and-renderer-processes)
-  * [Electron API](tutorial/quick-start.md#electron-api)
-  * [Node.js API](tutorial/quick-start.md#nodejs-api)
 * Добавление функционала в Ваше приложение
   * [Notification (Оповещения)](tutorial/notifications.md)
   * [Recent Documents](tutorial/recent-documents.md)
@@ -37,7 +31,7 @@
   * [Нативное перетаскивание файла](tutorial/native-file-drag-drop.md)
   * [Закадровый рендеринг](tutorial/offscreen-rendering.md)
   * [Dark Mode](tutorial/dark-mode.md)
-  * [Веб-встраивание в Electron](tutorial/web-embeds.md)
+  * [Встраивание веб в Electron](tutorial/web-embeds.md)
 * [Макеты и CLI](tutorial/boilerplates-and-clis.md)
   * [Макеты против CLI](tutorial/boilerplates-and-clis.md#boilerplate-vs-cli)
   * [electron-forge](tutorial/boilerplates-and-clis.md#electron-forge)
@@ -45,21 +39,23 @@
   * [electron-react-boilerplate](tutorial/boilerplates-and-clis.md#electron-react-boilerplate)
   * [Другие инструменты и макеты](tutorial/boilerplates-and-clis.md#other-tools-and-boilerplates)
 
-### Advanced steps
+### Advanced topics
 
 * Архитектура приложения
   * [Использование нативных модулей Node.js](tutorial/using-native-node-modules.md)
   * [Performance Strategies](tutorial/performance.md)
-  * [Security Strategies](tutorial/security.md)
+  * [Стратегии безопасности](tutorial/security.md)
+  * [Process Sandboxing](tutorial/sandbox.md)
 * [Доступность](tutorial/accessibility.md)
   * [Включение функций специальных возможностей вручную](tutorial/accessibility.md#manually-enabling-accessibility-features)
 * [Тестирование и отладка](tutorial/application-debugging.md)
   * [Отладка главного процесса](tutorial/debugging-main-process.md)
-  * [Debugging with Visual Studio Code](tutorial/debugging-vscode.md)
+  * [Отладка с кодом Visual Studio](tutorial/debugging-vscode.md)
   * [Использование Selenium и WebDriver](tutorial/using-selenium-and-webdriver.md)
   * [Тестирование с помощью систем непрерывной интеграции (Travis, Jenkins)](tutorial/testing-on-headless-ci.md)
   * [Расширение DevTools](tutorial/devtools-extension.md)
   * [Автоматическое тестирование с помощью собственного драйвера](tutorial/automated-testing-with-a-custom-driver.md)
+  * [REPL](tutorial/repl.md)
 * [Распространение](tutorial/application-distribution.md)
   * [Поддерживаемые платформы](tutorial/support.md#supported-platforms)
   * [Цифровая подпись](tutorial/code-signing.md)
@@ -118,6 +114,8 @@
 * [ipcMain](api/ipc-main.md)
 * [Menu](api/menu.md)
 * [MenuItem](api/menu-item.md)
+* [MessageChannelMain](api/message-channel-main.md)
+* [MessagePortMain](api/message-port-main.md)
 * [net](api/net.md)
 * [netLog](api/net-log.md)
 * [nativeTheme (Родная тема)](api/native-theme.md)
@@ -127,6 +125,7 @@
 * [protocol](api/protocol.md)
 * [screen](api/screen.md)
 * [session](api/session.md)
+* [ShareMenu](api/share-menu.md)
 * [системные настройки](api/system-preferences.md)
 * [TouchBar](api/touch-bar.md)
 * [Tray](api/tray.md)

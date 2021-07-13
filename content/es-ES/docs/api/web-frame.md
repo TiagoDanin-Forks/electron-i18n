@@ -10,6 +10,8 @@ Un ejemplo de zoom de la página actual al 200%.
 
 ```javascript
 const { webFrame } = require('electron')
+
+webFrame.setZoomFactor(2)
 ```
 
 ## Métodos
@@ -28,7 +30,7 @@ El factor debe ser mayor que 0.0.
 
 Devuelve `Número` - El factor de zoom actual.
 
-### `webFrame.setZoomLevel(nivel)`
+### `webFrame.setZoomLevel(level)`
 
 * `nivel` Número - Nivel de Zoom.
 
@@ -50,8 +52,10 @@ Establecer el nivel de máximo y mínimo pizca de zoom.
 > **NOTE**: Visual zoom is disabled by default in Electron. To re-enable it, call:
 > 
 > ```js
-webFrame.setVisualZoomLevelLimits(1, 3)
-```
+> webFrame.setVisualZoomLevelLimits(1, 3)
+> ```
+
+> **NOTE**: Visual zoom only applies to pinch-to-zoom behavior. Cmd+/-/0 zoom shortcuts are controlled by the 'zoomIn', 'zoomOut', and 'resetZoom' MenuItem roles in the application Menu. Para desactivar los atajos manualmente, [defina el menú](./menu.md#examples) y omita los roles de zoom de la definición.
 
 ### `webFrame.setSpellCheckProvider(language, provider)`
 
@@ -104,7 +108,7 @@ Inyecta CSS en la página web actual y devuelve un identificador único para la 
 
 * `llave` Cadena
 
-Elimina el CSS insertado desde la página web actual. The stylesheet is identified by its key, which is returned from `webFrame.insertCSS(css)`.
+Elimina el CSS insertado desde la página web actual. La hoja de estilos se identifica por su clave, el cual es devuelto desde `webFrame.insertCSS(css)`.
 
 ### `webFrame.insertText(texto)`
 
@@ -116,7 +120,7 @@ Inserta `texto` en el elemento enfocado.
 
 * `codigo` String
 * `userGesture` Boolean (opcional) - Predeterminado es `falso`.
-* `callback` Function (optional) - Called after script has been executed. Unless the frame is suspended (e.g. showing a modal alert), execution will be synchronous and the callback will be invoked before the method returns. For compatibility with an older version of this method, the error parameter is second.
+* `callback` function (opcional)-se llama una vez que se ha ejecutado la secuencia de comandos. Unless the frame is suspended (e.g. showing a modal alert), execution will be synchronous and the callback will be invoked before the method returns. For compatibility with an older version of this method, the error parameter is second.
   * `resultado` Cualquiera
   * `error` Error
 
@@ -131,7 +135,7 @@ En la ventana del navegador, algunas API HTML como `requestFullScreen` solo pued
 * `worldId` Integer - The ID of the world to run the javascript in, `0` is the default main world (where content runs), `999` is the world used by Electron's `contextIsolation` feature. Accepts values in the range 1..536870911.
 * `scripts` [WebSource[]](structures/web-source.md)
 * `userGesture` Boolean (opcional) - Predeterminado es `falso`.
-* `callback` Function (optional) - Called after script has been executed. Unless the frame is suspended (e.g. showing a modal alert), execution will be synchronous and the callback will be invoked before the method returns.  For compatibility with an older version of this method, the error parameter is second.
+* `callback` function (opcional)-se llama una vez que se ha ejecutado la secuencia de comandos. Unless the frame is suspended (e.g. showing a modal alert), execution will be synchronous and the callback will be invoked before the method returns.  For compatibility with an older version of this method, the error parameter is second.
   * `resultado` Cualquiera
   * `error` Error
 
@@ -213,7 +217,7 @@ Devuelve `WebFrame` - que tiene el `routingId` proporcionado, `null` si no se en
 
 * `word` String - The word to be spellchecked.
 
-Returns `Boolean` - True if the word is misspelled according to the built in spellchecker, false otherwise. If no dictionary is loaded, always return false.
+Returns `Boolean` - True if the word is misspelled according to the built in spellchecker, false otherwise. Si no se carga ningún diccionario, siempre devuelve false.
 
 ### `webFrame.getWordSuggestions(word)`
 

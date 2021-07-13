@@ -161,11 +161,12 @@ child.once('ready-to-show', () => {
     * `default` - 標準の灰色不透明なMacのタイトルバーになります。
     * `hidden` - タイトルバーが非表示かつフルサイズのコンテンツウインドウになりますが、タイトルバーには、まだ標準のウインドウコントロール ("信号") が左上にあります。
     * `hiddenInset` - ウインドウの端から信号ボタンが少し埋め込まれた別の見た目でタイトルバーが非表示になります。
-    * `customButtonsOnHover` Boolean (任意) - macOS フレームレスウインドウで、カスタムの閉じる、最小化ボタンを描画します。 これらのボタンはウインドウの左上にマウスカーソルを置かないと表示されません。 これらのボタンは標準のウインドウツールバーボタンで発生するマウスイベントの問題を防止します。 **注:** 現在、このオプションは実験的なものです。
-  * `trafficLightPosition` [Point](structures/point.md) (任意) - 信号機ボタンのカスタム位置を設定します。 `titleBarStyle` を `hidden` にした場合のみ可能です
-  * `fullscreenWindowTitle` Boolean (任意) - macOS のフルスクリーンモードで、どの `titleBarStyle` オプションの場合でもタイトルバーにタイトルを表示します。 省略値は、`false` です。
+    * `customButtonsOnHover` - タイトルバーが非表示になり、フルサイズコンテンツのウインドウが表示されます。ウィンドウの左上にカーソルを置くと信号機ボタンが表示されるようになります。  **注:** 現在、これは実験的な機能です。
+  * `trafficLightPosition` [Point](structures/point.md) (任意) - フレームレスウインドウにおける信号機ボタンのカスタム位置を設定します。
+  * `roundedCorners` Boolean (任意) - macOS でのフレームレスウインドウが丸角であるべきかどうか。 省略値は `true` です。
+  * `fullscreenWindowTitle` Boolean (任意) _非推奨_ - macOSで titleBarStyle が `hiddenInset` のフルスクリーンモードでタイトルバーにタイトルを表示するかどうか。 省略値は、`false` です。
   * `thickFrame` Boolean (任意) - Windowsのフレームレスウインドウに対して、標準のウインドウ枠を追加する `WS_THICKFRAME` スタイルを使用します。 `false` に設定すると、ウインドウの影とウインドウアニメーションがなくなります。 省略値は `true` です。
-  * `vibrancy` String (任意) - macOSでのみ、ウインドウに曇りガラス効果の種類を追加します。 `appearance-based`、`light`、`dark`、`titlebar`、`selection`、`menu`、`popover`、`sidebar`、`medium-light`、`ultra-dark`、`header`、`sheet`、`window`、`hud`、`fullscreen-ui`、`tooltip`、`content`、`under-window` または `under-page` にすることができます。  曇り値と組み合わせて `frame: false` を使用する場合は、デフォルト以外の `titleBarStyle` も使用する必要があります。 また、`appearance-based`、`light`、`dark`、`medium-light` と `ultra-dark` は非推奨であり、macOS の今後のバージョンで削除されます。
+  * `vibrancy` String (任意) - macOSでのみ、ウインドウに曇りガラス効果の種類を追加します。 `appearance-based`、`light`、`dark`、`titlebar`、`selection`、`menu`、`popover`、`sidebar`、`medium-light`、`ultra-dark`、`header`、`sheet`、`window`、`hud`、`fullscreen-ui`、`tooltip`、`content`、`under-window` または `under-page` にすることができます。 `appearance-based`、`light`、`dark`、`medium-light`、`ultra-dark` は非推奨になっており、macOS Catalina (10.15) で削除されたことにご注意ください。
   * `zoomToPageWidth` Boolean (任意) - macOS で、option キーを押しながら緑の信号ボタンをクリックしたり、ウインドウ > ズーム のメニュー項目をクリックしたりしたときの動作を制御します。 `true` の場合、ズームしたとき、ウインドウはWebページの最適な幅に拡大されます。`false` だと、画面の幅にズームされます。 これは、`maximize()` を直接呼び出したときの動作にも影響を与えます。 省略値は、`false` です。
   * `tabbingIdentifier` String (任意) - タブのグループ名で、macOS 10.12以上の場合、ネイティブのタブとしてウインドウを開くことができます。 同一のタブ識別子を持つウインドウは、一緒にグループ化されます。 これはネイティブのタブボタンをウインドウのタブバーに追加し、`app` とウインドウが `new-window-for-tab` イベントを受け取ることができるようになります。
   * `webPreferences` Object (任意) - ウェブページの機能の設定です。
@@ -173,13 +174,13 @@ child.once('ready-to-show', () => {
     * `nodeIntegration` Boolean (任意) - Node インテグレーションを有効にするかどうか。 省略値は、`false` です。
     * `nodeIntegrationInWorker` Boolean (任意) - WebワーカーでNode統合を有効にするかどうか。 省略値は、`false` です。 これについての詳細は、[マルチスレッド](../tutorial/multithreading.md) を参照してください。
     * `nodeIntegrationInSubFrames` Boolean (任意) - iframe や子ウインドウのようなサブフレーム内で Node.js サポートを有効にする実験的な機能です。 すべてのプリロードは iframe 毎にロードされます。メインフレーム内かそうでないか判断するには `process.isMainFrame` が使用できます。
-    * `preload` String (任意) - 他のスクリプトがページで実行される前にロードされるスクリプトを指定します。 このスクリプトは、Node統合がオンまたはオフであるかに関係なく常にNode APIにアクセスできます。 値は、スクリプトへの絶対ファイルパスにする必要があります。 Node統合がオフのときでも、プレロードされたスクリプトは、Nodeのグローバルシンボルをグローバルスコープに再導入できます。 [ここ](process.md#event-loaded) の例を参照してください。
-    * `sandbox` Boolean (任意) - 設定された場合、ウインドウと関連付けられているレンダラーをサンドボックス化します。これは、ChromiumのOSレベルのサンドボックスと互換性を持ち、Node.jsエンジンを無効化します。 これは `nodeIntegration` オプションと同じではなく、プレロードスクリプトで利用可能なAPIよりもさらに制限がかかります。 このオプションの詳細については、[ここ](sandbox-option.md) をお読みください。
+    * `preload` String (任意) - 他のスクリプトがページで実行される前にロードされるスクリプトを指定します。 このスクリプトは、Node統合がオンまたはオフであるかに関係なく常にNode APIにアクセスできます。 値は、スクリプトへの絶対ファイルパスにする必要があります。 Node統合がオフのときでも、プレロードされたスクリプトは、Nodeのグローバルシンボルをグローバルスコープに再導入できます。 [ここ](context-bridge.md#exposing-node-global-symbols) の例を参照してください。
+    * `sandbox` Boolean (任意) - 設定された場合、ウインドウと関連付けられているレンダラーをサンドボックス化します。これは、ChromiumのOSレベルのサンドボックスと互換性を持ち、Node.jsエンジンを無効化します。 これは `nodeIntegration` オプションと同じではなく、プレロードスクリプトで利用可能なAPIよりもさらに制限がかかります。 このオプションの詳細については、[ここ](../tutorial/sandbox.md) をお読みください。
     * `enableRemoteModule` Boolean (任意) - [`remote`](remote.md) モジュールを有効にするかどうか。 省略値は、`false` です。
     * `session` [Session](session.md#class-session) (任意) - ページで使用されるセッションを設定します。 Session オブジェクトを直接引き渡す代わりに、パーティション文字列を受け付ける `partition` オプションを使用することを選択することもできます。 `session` と `partition` の両方が指定されたときは、`session` が優先されます。 省略値は、既定のセッションです。
     * `partition` String (任意) - セッションのパーティション文字列に従って、ページで使用されるセッションを設定します。 `partition` が `persist:` 始まりの場合、ページはアプリの全ページで利用可能な永続的なセッションを同じ `partition` で使用します。 `persist:` プレフィックスがない場合、ページは、インメモリセッションを使用します。 同じ `partition` を割り当てることによって、複数のページが同じセッションを共有できます。 省略値は、既定のセッションです。
     * `affinity` String (任意) - 指定されると、同じ `affinity` のウェブページは同じレンダラープロセス内で実行します。 レンダラープロセスを再利用することにより、`preload`、`sandbox`、`nodeIntegration` などの異なる値を指定した場合でも、特定の `webPreferences` オプションがウェブページ間で共有されることに注意してください。 したがって、同じ `affinity` を持つウェブページに対しては、全く同じ `webPreferences` を使用することをお勧めします。 _非推奨_
-    * `zoomFactor` Number (任意) - ページの既定のズーム倍率で、`3.0` は `300%` を表します。 既定値は `1.0` です。
+    * `zoomFactor` Number (任意) - ページの既定のズーム倍率で、`3.0` は `300%` を表します。 省略値は `1.0` です。
     * `javascript` Boolean (任意) - JavaScript サポートを有効にします。 省略値は `true` です。
     * `webSecurity` Boolean (任意) - `false` のとき、同一オリジンポリシー (通常、テスト用Webサイトを使用します) が無効になり、ユーザによって設定されない場合、`allowRunningInsecureContent` が `true` に設定されます。 省略値は `true` です。
     * `allowRunningInsecureContent` Boolean (任意) - https のページで http の URL からの JavaScript、CSS やプラグインを実行することを許可します。 省略値は、`false` です。
@@ -508,77 +509,6 @@ Linux 上では以下のアプリコマンドが明示的にサポートされ�
 
 戻り値 `BrowserWindow | null` - 指定された `id` のウインドウ。
 
-#### `BrowserWindow.addExtension(path)` _非推奨_
-
-* `path` String
-
-`path` にあるChrome拡張機能を追加し、拡張機能の名前を返します。
-
-このメソッドは、拡張機能のマニフェストが存在しないか、不完全である場合、何も返しません。
-
-**注:** このAPIは `app` モジュールの `ready` イベントが発生する前には呼び出すことはできません。
-
-**注:** このメソッドは非推奨です。 代わりに [`ses.loadExtension(path)`](session.md#sesloadextensionpath-options) を使用してください。
-
-#### `BrowserWindow.removeExtension(name)` _非推奨_
-
-* `name` String
-
-指定した名前でChrome拡張機能を削除します。
-
-**注:** このAPIは `app` モジュールの `ready` イベントが発生する前には呼び出すことはできません。
-
-**注:** このメソッドは非推奨です。 代わりに [`ses.removeExtension(extension_id)`](session.md#sesremoveextensionextensionid) を使用してください。
-
-#### `BrowserWindow.getExtensions()` _非推奨_
-
-戻り値 `Record<String, ExtensionInfo>` - キーは拡張機能の名前で、それぞれの値は、`name` と `version` プロパティを含むObjectです。
-
-**注:** このAPIは `app` モジュールの `ready` イベントが発生する前には呼び出すことはできません。
-
-**注:** このメソッドは非推奨です。 代わりに [`ses.getAllExtensions()`](session.md#sesgetallextensions) を使用してください。
-
-#### `BrowserWindow.addDevToolsExtension(path)` _非推奨_
-
-* `path` String
-
-`path` にある開発者ツールの拡張機能を追加し、拡張機能の名前を返します。
-
-拡張機能は記憶されるため、このAPIを一度しか呼び出す必要はありません。このAPIはプログラミングで使用するためのものではありません。 既にロードされている拡張機能を追加しようとした場合、このメソッドは何も返さず、代わりにコンソールに警告を出力します。
-
-このメソッドは、拡張機能のマニフェストが存在しないか、不完全である場合、何も返しません。
-
-**注:** このAPIは `app` モジュールの `ready` イベントが発生する前には呼び出すことはできません。
-
-**注:** このメソッドは非推奨です。 代わりに [`ses.loadExtension(path)`](session.md#sesloadextensionpath-options) を使用してください。
-
-#### `BrowserWindow.removeDevToolsExtension(name)` _非推奨_
-
-* `name` String
-
-指定した名前で開発者ツールの拡張機能を削除します。
-
-**注:** このAPIは `app` モジュールの `ready` イベントが発生する前には呼び出すことはできません。
-
-**注:** このメソッドは非推奨です。 代わりに [`ses.removeExtension(extension_id)`](session.md#sesremoveextensionextensionid) を使用してください。
-
-#### `BrowserWindow.getDevToolsExtensions()` _非推奨_
-
-戻り値 `Record<string, ExtensionInfo>` - キーは拡張機能の名前で、それぞれの値は、`name` と `version` プロパティを含むObjectです。
-
-開発者ツールの拡張機能がインストールされているかを確認するには、以下のように実行することで可能です。
-
-```javascript
-const { BrowserWindow } = require('electron')
-
-const installed = 'devtron' in BrowserWindow.getDevToolsExtensions()
-console.log(installed)
-```
-
-**注:** このAPIは `app` モジュールの `ready` イベントが発生する前には呼び出すことはできません。
-
-**注:** このメソッドは非推奨です。 代わりに [`ses.getAllExtensions()`](session.md#sesgetallextensions) を使用してください。
-
 ### インスタンスプロパティ
 
 `new BrowserWindow` で作成されたオブジェクトは、以下のプロパティを持っています。
@@ -887,7 +817,7 @@ Returns [`Rectangle`](structures/rectangle.md) - 通常状態におけるウィ�
 
 #### `win.isEnabled()`
 
-戻り値 `Boolean` - そのウインドウが有効かどうか。
+戻り値 `Boolean` - ウインドウが有効かどうか。
 
 #### `win.setSize(width, height[, animate])`
 
@@ -1100,7 +1030,7 @@ Windows 10 ユーザーは [PC をタブレットとして使用できる](https
 
 #### `win.getMediaSourceId()`
 
-戻り値 `String` - DesktopCapturerSource の ID の形式のウィンドウ ID。 例えば "window:1234:0" 。
+戻り値 `String` - DesktopCapturerSource の ID の形式のウィンドウ ID。 例えば "window:1324:0" 。
 
 より正確には、フォーマットは ` window:id:other_id` です。ここでの `id` は、Windows では `HWND`、macOS では `CGWindowID` (`uint64_t`)、Linux では `Window` (`unsigned long`) です。 `other_id` は、同じトップレベルウィンドウ内のウェブコンテンツ (タブ) を識別するために使用されます。
 
@@ -1174,7 +1104,7 @@ Windows 10 ユーザーは [PC をタブレットとして使用できる](https
   * `httpReferrer` (String | [Referrer](structures/referrer.md)) (任意) - HTTP リファラの URL。
   * `userAgent` String (任意) - リクエスト元のユーザーエージェント。
   * `extraHeaders` String (任意) - "\n" で区切られた追加のヘッダー
-  * `postData` ([UploadRawData[]](structures/upload-raw-data.md) | [UploadFile[]](structures/upload-file.md)) (任意)
+  * `postData` ([UploadRawData](structures/upload-raw-data.md) | [UploadFile](structures/upload-file.md))[] (任意)
   * `baseURLForDataURL` String (任意) - データ URL によってロードされたファイルの (最後のパス区切り文字を含む) ベース URL。 これは指定された `url` がデータ URL で、他のファイルをロードする必要がある場合のみ必要です。
 
 戻り値 `Promise<void>` - ページ読み込みが完了した時 ([`did-finish-load`](web-contents.md#event-did-finish-load) を参照) に解決され、ページの読み込みに失敗した時 ([`did-fail-load`](web-contents.md#event-did-fail-load) を参照) に拒否される Promise。
@@ -1276,7 +1206,7 @@ Windowsでは、モードを渡すことができます。 有効な値は、`no
 
 #### `win.setShape(rects)` _Windows_ _Linux_ _実験的_
 
-* `rects` [Rectangle[]](structures/rectangle.md) - ウィンドウの形を設定します。 空のリストを渡すと、ウィンドウが四角形に戻ります。
+* `rects` [Rectangle[]](structures/rectangle.md) - ウィンドウの形。 空のリストを渡すと、ウィンドウが四角形に戻ります。
 
 ウィンドウの形を設定すると、システム内で描画とユーザ操作が許可されているウィンドウ内の領域が決まります。 与えられた領域の外側のピクセルでは描画されず、マウスイベントも登録されません。 領域外のマウスイベントはそのウィンドウでは受信されませんが、ウィンドウの後ろにあるものにそのイベントがフォールスルーします。
 
@@ -1348,8 +1278,6 @@ Windowsでは、モードを渡すことができます。 有効な値は、`no
 
 ウインドウの信号ボタンを表示するかどうかを設定します。
 
-これは `titleBarStyle` を `customButtonsOnHover` に設定したときは呼び出せません。
-
 #### `win.setAutoHideMenuBar(hide)`
 
 * `hide` Boolean
@@ -1377,6 +1305,7 @@ Windowsでは、モードを渡すことができます。 有効な値は、`no
 * `visible` Boolean
 * `options` Object (任意)
   * `visibleOnFullScreen` Boolean (任意) _macOS_ - ウインドウをフルスクリーンウィンドウの上で表示するかどうかを設定します。
+  * `skipTransformProcessType` Boolean (任意) _macOS_ - setVisibleOnAllWorkspaces を呼ぶと、デフォルトでは UIElementApplication と ForegroundApplication の間でプロセスタイプが変換され、正しい動作を保証します。 しかし、これでは呼び出されるたびに短時間だけウインドウが非表示になり、Dock も非表示になってしまいます。 ウインドウが既に UIElementApplication 型である場合、skipTransformProcessType に true を渡すことでこの変換をバイパスできます。
 
 ウインドウをすべてのワークスペースで表示させるかどうかを設定します。
 
@@ -1472,11 +1401,11 @@ macOS ではウィンドウからフォーカスは除去されません。
 
 * `position` [Point](structures/point.md)
 
-信号ボタンのカスタム位置を設定します。 `titleBarStyle` を `hidden` にした場合のみ可能です.
+フレームレスウインドウにおける信号機ボタンのカスタム位置を設定します。
 
 #### `win.getTrafficLightPosition()` _macOS_
 
-戻り値 `Point` - 現在の信号ボタンの位置。 `titleBarStyle` を `hidden` にした場合のみ可能です.
+戻り値 `Point` - フレームレスウインドウにおける現在の信号機ボタンの位置。
 
 #### `win.setTouchBar(touchBar)` _macOS_
 

@@ -10,28 +10,31 @@
 
 В песочнице графический объект `process` содержит только подмножество API:
 
-- `crash() - Падение`
-- `hang() - Зависание`
-- `getCreationTime() - Время создания`
-- `getHeapStatistics() - Статистика кучи (распределяемой памяти)`
-- `getBlinkMemoryInfo() - Информация о памяти Blink`
-- `getProcessMemoryInfo() - Сведения о памяти процесса`
-- `getSystemMemoryInfo() - Информация о системной памяти`
-- `getSystemVersion() - Версия системы`
-- `getCPUUsage() - Использование процессора`
-- `getIOCounters() - Счетчики IO`
-- `argv`
-- `execPath`
-- `env`
-- `pid`
-- `arch`
-- `platform`
-- `sandboxed - Запущена ли песочница`
-- `type`
-- `версия`
-- `versions - Список с версиями и их зависимостями`
-- `mas - Является ли сборкой Mac App Store`
-- `windowsStore - Является ли приложением Windows Store (appx)`
+* `crash() - Падение`
+* `hang() - Зависание`
+* `getCreationTime() - Время создания`
+* `getHeapStatistics() - Статистика кучи (распределяемой памяти)`
+* `getBlinkMemoryInfo() - Информация о памяти Blink`
+* `getProcessMemoryInfo() - Сведения о памяти процесса`
+* `getSystemMemoryInfo() - Информация о системной памяти`
+* `getSystemVersion() - Версия системы`
+* `getCPUUsage() - Использование процессора`
+* `getIOCounters() - Счетчики IO`
+* `uptime()`
+* `argv`
+* `execPath`
+* `env`
+* `pid`
+* `arch`
+* `platform`
+* `sandboxed - Запущена ли песочница`
+* `contextIsolated`
+* `тип`
+* `версия`
+* `versions - Список с версиями и их зависимостями`
+* `mas - Является ли сборкой Mac App Store`
+* `windowsStore - Является ли приложением Windows Store (appx)`
+* `contextId`
 
 ## События
 
@@ -39,23 +42,11 @@
 
 Срабатывает, когда Electron загрузил свой скрипт внутренней инициализации и начинает загружать веб-страницу или основной скрипт.
 
-Это событие может использоваться preload скриптом, чтобы вернуть удаленные Node global symbols в глобальную область видимости, когда node integration выключен:
-
-```javascript
-// preload.js
-const _setImmediate = setImmediate
-const _clearImmediate = clearImmediate
-process.once('loaded', () => {
-  global.setImmediate = _setImmediate
-  global.clearImmediate = _clearImmediate
-})
-```
-
 ## Свойства
 
 ### `process.defaultApp` _Только чтение_
 
-A `Boolean`. When app is started by being passed as parameter to the default app, this property is `true` in the main process, otherwise it is `undefined`.
+А `Boolean`. When app is started by being passed as parameter to the default app, this property is `true` in the main process, otherwise it is `undefined`.
 
 ### `process.isMainFrame` _Только чтение_
 
@@ -63,7 +54,7 @@ A `Boolean`, `true` when the current renderer context is the "main" renderer fra
 
 ### `process.mas` _Только чтение_
 
-A `Boolean`. For Mac App Store build, this property is `true`, for other builds it is `undefined`.
+А `Boolean`. For Mac App Store build, this property is `true`, for other builds it is `undefined`.
 
 ### `process.noAsar`
 
@@ -71,7 +62,7 @@ A `Boolean` that controls ASAR support inside your application. Setting this to 
 
 ### `process.noDeprecation`
 
-`Boolean` который управляет тем, будут ли предупреждения об устаревании выводиться в `stderr` или нет. Установка в `true` заглушит предупреждения об устаревании. Это свойство используется вместо флага командной строки `--no-deprecation`.
+`Boolean`. Контролирует будут ли неодобряющие предупреждения выводиться в `stderr`. Установка в `true` заглушит неодобряющие предупреждения. Это свойство используется вместо флага командной строки `--no-deprecation`.
 
 ### `process.resourcesPath` _Только чтение_
 
@@ -79,7 +70,11 @@ A `Boolean` that controls ASAR support inside your application. Setting this to 
 
 ### `process.sandboxed` _Только чтение_
 
-A `Boolean`. When the renderer process is sandboxed, this property is `true`, otherwise it is `undefined`.
+А `Boolean`. When the renderer process is sandboxed, this property is `true`, otherwise it is `undefined`.
+
+### `process.contextIsolated` _Только чтение_
+
+A `Boolean` that indicates whether the current renderer context has `contextIsolation` enabled. It is `undefined` in the main process.
 
 ### `process.throwDeprecation`
 
@@ -111,7 +106,11 @@ A `String` representing the current process's type, can be:
 
 ### `process.windowsStore` _Только чтение_
 
-A `Boolean`. If the app is running as a Windows Store app (appx), this property is `true`, for otherwise it is `undefined`.
+А `Boolean`. If the app is running as a Windows Store app (appx), this property is `true`, for otherwise it is `undefined`.
+
+### `process.contextId` _Только чтение_
+
+A `String` (optional) representing a globally unique ID of the current JavaScript context. Each frame has its own JavaScript context. When contextIsolation is enabled, the isolated world also has a separate JavaScript context. This property is only available in the renderer process.
 
 ## Методы
 

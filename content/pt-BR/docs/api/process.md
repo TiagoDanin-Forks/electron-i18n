@@ -10,28 +10,31 @@ O objeto `process` do Electron estende do [objeto `process` do Node.js](https://
 
 In sandboxed renderers the `process` object contains only a subset of the APIs:
 
-- `crash()`
-- `hang()`
-- `getCreationTime()`
-- `getHeapStatistics()`
-- `getBlinkMemoryInfo()`
-- `getProcessMemoryInfo()`
-- `getSystemMemoryInfo()`
-- `getSystemVersion()`
-- `getCPUUsage()`
-- `getIOCounters()`
-- `argv`
-- `execPath`
-- `env`
-- `pid`
-- `arch`
-- `plataforma`
-- `sandboxed`
-- `tipo`
-- `versão`
-- `versions`
-- `mas`
-- `windowsStore`
+* `crash()`
+* `hang()`
+* `getCreationTime()`
+* `getHeapStatistics()`
+* `getBlinkMemoryInfo()`
+* `getProcessMemoryInfo()`
+* `getSystemMemoryInfo()`
+* `getSystemVersion()`
+* `getCPUUsage()`
+* `getIOCounters()`
+* `uptime()`
+* `argv`
+* `execPath`
+* `env`
+* `pid`
+* `arch`
+* `plataforma`
+* `sandboxed`
+* `contextIsolated`
+* `tipo`
+* `versão`
+* `versions`
+* `mas`
+* `windowsStore`
+* `contextId`
 
 ## Eventos
 
@@ -39,23 +42,11 @@ In sandboxed renderers the `process` object contains only a subset of the APIs:
 
 Emitido quando o Electron já carregou seu script de inicialização interno e começa a carregar a página da web ou o script principal.
 
-It can be used by the preload script to add removed Node global symbols back to the global scope when node integration is turned off:
-
-```javascript
-// preload.js
-const _setImmediate = setImmediate
-const _clearImmediate = clearImmediate
-process.once('loaded', () => {
-  global.setImmediate = _setImmediate
-  global.clearImmediate = _clearImmediate
-})
-```
-
 ## Propriedades
 
 ### `process.defaultApp` _Readonly_
 
-A `Boolean`. When app is started by being passed as parameter to the default app, this property is `true` in the main process, otherwise it is `undefined`.
+Um `Boolean`. When app is started by being passed as parameter to the default app, this property is `true` in the main process, otherwise it is `undefined`.
 
 ### `process.isMainFrame` _Readonly_
 
@@ -63,7 +54,7 @@ A `Boolean`, `true` when the current renderer context is the "main" renderer fra
 
 ### `process.mas` _Readonly_
 
-A `Boolean`. For Mac App Store build, this property is `true`, for other builds it is `undefined`.
+Um `Boolean`. For Mac App Store build, this property is `true`, for other builds it is `undefined`.
 
 ### `process.noAsar`
 
@@ -79,7 +70,11 @@ Uma `String` que representa o caminho para o diretório de recursos.
 
 ### `process.sandboxed` _Readonly_
 
-A `Boolean`. When the renderer process is sandboxed, this property is `true`, otherwise it is `undefined`.
+Um `Boolean`. When the renderer process is sandboxed, this property is `true`, otherwise it is `undefined`.
+
+### `process.contextIsolated` _Readonly_
+
+A `Boolean` that indicates whether the current renderer context has `contextIsolation` enabled. It is `undefined` in the main process.
 
 ### `process.throwDeprecation`
 
@@ -111,11 +106,15 @@ A `String` representing Electron's version string.
 
 ### `process.windowsStore` _Readonly_
 
-A `Boolean`. If the app is running as a Windows Store app (appx), this property is `true`, for otherwise it is `undefined`.
+Um `Boolean`. If the app is running as a Windows Store app (appx), this property is `true`, for otherwise it is `undefined`.
+
+### `process.contextId` _Readonly_
+
+A `String` (optional) representing a globally unique ID of the current JavaScript context. Each frame has its own JavaScript context. When contextIsolation is enabled, the isolated world also has a separate JavaScript context. This property is only available in the renderer process.
 
 ## Métodos
 
-The `process` object has the following methods:
+O objeto `process` tem os seguintes métodos:
 
 ### `process.crash()`
 
@@ -125,15 +124,15 @@ Causes the main thread of the current process crash.
 
 Returns `Number | null` - The number of milliseconds since epoch, or `null` if the information is unavailable
 
-Indicates the creation time of the application. The time is represented as number of milliseconds since epoch. It returns null if it is unable to get the process creation time.
+Indicates the creation time of the application. O tempo é representado como número de milissegundos desde a época. It returns null if it is unable to get the process creation time.
 
 ### `process.getCPUUsage()`
 
-Returns [`CPUUsage`](structures/cpu-usage.md)
+Retorna [`CPUUsage`](structures/cpu-usage.md)
 
 ### `process.getIOCounters()` _Windows_ _Linux_
 
-Returns [`IOCounters`](structures/io-counters.md)
+Retorna [`IOCounters`](structures/io-counters.md)
 
 ### `process.getHeapStatistics()`
 
@@ -202,7 +201,7 @@ console.log(version)
 
 Returns `Boolean` - Indicates whether the snapshot has been created successfully.
 
-Takes a V8 heap snapshot and saves it to `filePath`.
+Tira um instantâneo de pilha V8 e salva-o para `filePath`.
 
 ### `process.hang()`
 

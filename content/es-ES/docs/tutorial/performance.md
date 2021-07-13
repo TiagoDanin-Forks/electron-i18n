@@ -61,9 +61,9 @@ node --cpu-prof --heap-prof -e "require('request')"
 
 Ejecutar este comando resulta en un archivo `.cpuprofile` y un archivo `.heapprofile` en el directorio en el que lo ejecutó. Ambos archivos pueden ser analizados usando las Herramientas para desarrolladores de Chrome, usando las pestañas `Rendimiento` y `Memoria` respectivamente.
 
-![performance-cpu-prof][]
+![Perfil de rendimiento de la CPU][4]
 
-![performance-heap-prof][]
+![Performance Heap Memory Profile][5]
 
 En este ejemplo, en la máquina del autor, vimos que la carga de `solicitud` tomó medio segundo, mientras que `node-fetch` tomó dramáticamente menos memoria y menos de 50ms.
 
@@ -107,14 +107,14 @@ module.exports = { parser }
 En el ejemplo anterior, estamos haciendo un montón de trabajo que se está ejecutando tan pronto como se carga el archivo. ¿Necesitamos obtener archivos analizados de inmediato? ¿Podríamos hacer este trabajo un poco más tarde, cuando `getParsedFiles()` es realmente llamado?
 
 ```js
-// "fs" probablemente ya está siendo cargado, así que la llamada `require()` es barata
+// "fs" is likely already being loaded, so the `require()` call is cheap
 const fs = require('fs')
 
-class Analizador {
+class Parser {
   async getFiles () {
-    // Toca el disco tan pronto como `getFiles` sea llamado, no antes.
-    // Además, asegúrese de que no estamos bloqueando otras operaciones usando
-    // la versión asincrónica.
+    // Touch the disk as soon as `getFiles` is called, not sooner.
+    // Also, ensure that we're not blocking other operations by using
+    // the asynchronous version.
     this.files = this.files || await fs.readdir('.')
 
     return this.files
@@ -123,20 +123,20 @@ class Analizador {
   async getParsedFiles () {
     // Our fictitious foo-parser is a big and expensive module to load, so
     // defer that work until we actually need to parse files.
-    // Ya que `require()` viene con una caché de módulos, la llamada `require()`
-    // solo será costosa una vez - las llamadas posteriores de `getParsedFiles()`
-    // serán más rápidas.
+    // Since `require()` comes with a module cache, the `require()` call
+    // will only be expensive once - subsequent calls of `getParsedFiles()`
+    // will be faster.
     const fooParser = require('foo-parser')
     const files = await this.getFiles()
 
-    return fooParser. arse(files)
+    return fooParser.parse(files)
   }
 }
 
-// Esta operación es ahora mucho más barata que en nuestro ejemplo anterior
+// This operation is now a lot cheaper than in our previous example
 const parser = new Parser()
 
-módulo. xports = { parser }
+module.exports = { parser }
 ```
 
 En resumen, asigna recursos "justo a tiempo" en lugar de asignarlos todos cuando tu aplicación inicie.
@@ -239,9 +239,10 @@ Hay numerosos bundlers de JavaScript ahí fuera y sabemos mejor que enfurecer a 
 
 As of writing this article, the popular choices include [Webpack][webpack], [Parcel][parcel], and [rollup.js][rollup].
 
+[4]: ../images/performance-cpu-prof.png
+[5]: ../images/performance-heap-prof.png
+
 [security]: ./security.md
-[performance-cpu-prof]: ../images/performance-cpu-prof.png
-[performance-heap-prof]: ../images/performance-heap-prof.png
 [chrome-devtools-tutorial]: https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/
 [worker-threads]: https://nodejs.org/api/worker_threads.html
 [web-workers]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
